@@ -1,0 +1,566 @@
+<html>
+<head>
+<title>PDSnumpy.py</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #6897bb;}
+.s3 { color: #6a8759;}
+.s4 { color: #808080;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+PDSnumpy.py</font>
+</center></td></tr></table>
+<pre><span class="s0">import </span><span class="s1">array</span>
+L = list(range(<span class="s2">10</span><span class="s1">))</span>
+A = array.array(<span class="s3">'i'</span><span class="s0">, </span><span class="s1">L)</span>
+print(A)
+
+<span class="s0">import </span><span class="s1">numpy </span><span class="s0">as </span><span class="s1">np</span>
+<span class="s4"># integer array:</span>
+<span class="s1">print(np.array([</span><span class="s2">1</span><span class="s0">, </span><span class="s2">4</span><span class="s0">, </span><span class="s2">2</span><span class="s0">, </span><span class="s2">5</span><span class="s0">, </span><span class="s2">3</span><span class="s1">]))</span>
+a = np.array([<span class="s2">1</span><span class="s0">, </span><span class="s2">4</span><span class="s0">, </span><span class="s2">2</span><span class="s0">, </span><span class="s2">5</span><span class="s0">, </span><span class="s2">3</span><span class="s1">])</span>
+print(a)
+
+print(np.array([<span class="s2">1.23</span><span class="s0">, </span><span class="s2">4</span><span class="s0">, </span><span class="s2">2</span><span class="s0">, </span><span class="s2">5</span><span class="s0">, </span><span class="s2">3</span><span class="s1">]))</span>
+print(np.array([<span class="s2">1</span><span class="s0">, </span><span class="s2">2</span><span class="s0">, </span><span class="s2">3</span><span class="s0">, </span><span class="s2">4</span><span class="s1">]</span><span class="s0">, </span><span class="s1">dtype=</span><span class="s3">'float32'</span><span class="s1">))</span>
+print(np.array([range(i<span class="s0">, </span><span class="s1">i+</span><span class="s2">3</span><span class="s1">) </span><span class="s0">for </span><span class="s1">i </span><span class="s0">in </span><span class="s1">[</span><span class="s2">2</span><span class="s0">, </span><span class="s2">4</span><span class="s0">, </span><span class="s2">6</span><span class="s1">]]))</span>
+
+<span class="s4"># Create a length-10 integer array filled with zeros</span>
+<span class="s1">print(np.zeros(</span><span class="s2">10</span><span class="s0">, </span><span class="s1">dtype=int))</span>
+a = [<span class="s2">1</span><span class="s0">, </span><span class="s2">2</span><span class="s0">, </span><span class="s2">3</span><span class="s1">]</span>
+print(a)
+print(type(a))
+b = np.zeros(<span class="s2">10</span><span class="s0">, </span><span class="s1">dtype=int)</span>
+print(b)
+print(type(b))
+
+<span class="s4"># Create a 3x5 floating-point array filled with 1s</span>
+<span class="s1">print(np.ones((</span><span class="s2">3</span><span class="s0">, </span><span class="s2">5</span><span class="s1">)</span><span class="s0">, </span><span class="s1">dtype=float))</span>
+print(np.ones((<span class="s2">2</span><span class="s0">, </span><span class="s2">6</span><span class="s1">)</span><span class="s0">, </span><span class="s1">dtype=int))</span>
+
+<span class="s4"># Create a 3x5 array filled with 3.14</span>
+<span class="s1">print(np.full((</span><span class="s2">3</span><span class="s0">, </span><span class="s2">5</span><span class="s1">)</span><span class="s0">, </span><span class="s2">3.14</span><span class="s1">))</span>
+
+<span class="s4"># Create an array filled with a linear sequence</span>
+# Starting at 0, ending at 20, stepping by 2
+# (this is similar to the built-in range() function)
+<span class="s1">print(np.arange(</span><span class="s2">0</span><span class="s0">, </span><span class="s2">20</span><span class="s0">, </span><span class="s2">2</span><span class="s1">))</span>
+
+<span class="s4"># Create an array of five values evenly spaced between 0 and 1</span>
+<span class="s1">print(np.linspace(</span><span class="s2">0</span><span class="s0">, </span><span class="s2">1</span><span class="s0">, </span><span class="s2">5</span><span class="s1">))</span>
+print(np.linspace(<span class="s2">0</span><span class="s0">, </span><span class="s2">10</span><span class="s0">, </span><span class="s2">11</span><span class="s1">))</span>
+
+<span class="s4"># Create a 3x3 array of uniformly distributed</span>
+# random values between 0 and 1
+<span class="s1">print(np.random.random((</span><span class="s2">3</span><span class="s0">, </span><span class="s2">3</span><span class="s1">)))</span>
+print(np.random.random((<span class="s2">2</span><span class="s0">, </span><span class="s2">4</span><span class="s1">)))</span>
+
+<span class="s4"># Create a 3x3 array of normally distributed random values</span>
+# with mean 0 and standard deviation 1
+<span class="s1">print(np.random.normal(</span><span class="s2">0</span><span class="s0">, </span><span class="s2">1</span><span class="s0">, </span><span class="s1">(</span><span class="s2">3</span><span class="s0">, </span><span class="s2">3</span><span class="s1">)))</span>
+print(np.random.normal(<span class="s2">0</span><span class="s0">, </span><span class="s2">10</span><span class="s0">, </span><span class="s1">(</span><span class="s2">2</span><span class="s0">, </span><span class="s2">2</span><span class="s1">)))</span>
+
+<span class="s4"># Create a 3x3 array of random integers in the interval [0, 10)</span>
+<span class="s1">print(np.random.randint(</span><span class="s2">0</span><span class="s0">, </span><span class="s2">10</span><span class="s0">, </span><span class="s1">(</span><span class="s2">3</span><span class="s0">, </span><span class="s2">3</span><span class="s1">)))</span>
+
+<span class="s4"># Create a 3x3 identity matrix</span>
+<span class="s1">print(np.eye(</span><span class="s2">3</span><span class="s1">))</span>
+
+<span class="s4"># Create an uninitialized array of three integers</span>
+# The values will be whatever happens to already exist at that
+# memory location
+<span class="s1">print(np.empty(</span><span class="s2">3</span><span class="s1">))</span>
+
+np.random.seed(<span class="s2">0</span><span class="s1">)</span>
+
+x1 = np.random.randint(<span class="s2">10</span><span class="s0">, </span><span class="s1">size=</span><span class="s2">6</span><span class="s1">)</span>
+x2 = np.random.randint(<span class="s2">10</span><span class="s0">, </span><span class="s1">size=(</span><span class="s2">3</span><span class="s0">, </span><span class="s2">4</span><span class="s1">))</span>
+x3 = np.random.randint(<span class="s2">10</span><span class="s0">, </span><span class="s1">size=(</span><span class="s2">3</span><span class="s0">, </span><span class="s2">4</span><span class="s0">, </span><span class="s2">5</span><span class="s1">))</span>
+print(<span class="s3">&quot;x3 ndim :&quot;</span><span class="s0">, </span><span class="s1">x3.ndim)</span>
+print(<span class="s3">&quot;x3 shape:&quot;</span><span class="s0">, </span><span class="s1">x3.shape)</span>
+print(<span class="s3">&quot;x3 size:&quot;</span><span class="s0">, </span><span class="s1">x3.size)</span>
+print(<span class="s3">&quot;dtype:&quot;</span><span class="s0">, </span><span class="s1">x3.dtype)</span>
+print(<span class="s3">&quot;itemsize:&quot;</span><span class="s0">, </span><span class="s1">x3.itemsize</span><span class="s0">, </span><span class="s3">&quot;bytes&quot;</span><span class="s1">)</span>
+print(<span class="s3">&quot;nbytes:&quot;</span><span class="s0">, </span><span class="s1">x3.nbytes</span><span class="s0">, </span><span class="s3">&quot;bytes&quot;</span><span class="s1">)</span>
+
+<span class="s4"># Array Indexing</span>
+<span class="s1">print(x1)</span>
+print(x1[<span class="s2">0</span><span class="s1">])</span>
+print(type(x1[<span class="s2">0</span><span class="s1">]))</span>
+print(x1[-<span class="s2">1</span><span class="s1">])</span>
+print(x1[-<span class="s2">2</span><span class="s1">])</span>
+print(x2)
+print(x2[<span class="s2">0</span><span class="s0">, </span><span class="s2">0</span><span class="s1">])</span>
+print(x2[<span class="s2">1</span><span class="s0">, </span><span class="s2">1</span><span class="s1">])</span>
+print(x2[<span class="s2">1</span><span class="s0">, </span><span class="s2">3</span><span class="s1">])</span>
+print(x2[-<span class="s2">1</span><span class="s0">, </span><span class="s2">1</span><span class="s1">])</span>
+x2[<span class="s2">0</span><span class="s0">, </span><span class="s2">0</span><span class="s1">] = </span><span class="s2">12</span>
+<span class="s1">print(x2)</span>
+x1[<span class="s2">0</span><span class="s1">] = </span><span class="s2">3.14159 </span><span class="s4"># this will be truncated!</span>
+<span class="s1">print(x1)</span>
+print(x3[<span class="s2">0</span><span class="s0">, </span><span class="s2">2</span><span class="s0">, </span><span class="s2">3</span><span class="s1">])</span>
+
+<span class="s4"># Array Slicing</span>
+<span class="s1">x = np.arange(</span><span class="s2">10</span><span class="s1">)</span>
+print(x)
+print(x[:<span class="s2">5</span><span class="s1">])</span>
+print(x[<span class="s2">5</span><span class="s1">:])</span>
+print(x[<span class="s2">4</span><span class="s1">:</span><span class="s2">7</span><span class="s1">])</span>
+print(x[::<span class="s2">2</span><span class="s1">])</span>
+print(x[<span class="s2">1</span><span class="s1">::</span><span class="s2">2</span><span class="s1">])</span>
+print(x[::-<span class="s2">1</span><span class="s1">])</span>
+print(x[<span class="s2">5</span><span class="s1">::-</span><span class="s2">2</span><span class="s1">])</span>
+print(x[<span class="s2">5</span><span class="s1">::-</span><span class="s2">1</span><span class="s1">])</span>
+print(x2)
+print(x2[:<span class="s2">2</span><span class="s0">, </span><span class="s1">:</span><span class="s2">3</span><span class="s1">])</span>
+print(x2[<span class="s2">2</span><span class="s0">, </span><span class="s2">3</span><span class="s1">])</span>
+print(x2[:<span class="s0">, </span><span class="s1">::</span><span class="s2">2</span><span class="s1">])</span>
+print(x2[<span class="s2">0</span><span class="s1">:</span><span class="s2">3</span><span class="s0">, </span><span class="s1">::</span><span class="s2">2</span><span class="s1">])</span>
+print(x2[::-<span class="s2">1</span><span class="s0">, </span><span class="s1">:])</span>
+print(x2[::-<span class="s2">1</span><span class="s0">, </span><span class="s1">::-</span><span class="s2">1</span><span class="s1">])</span>
+print(x2[::-<span class="s2">1</span><span class="s0">, </span><span class="s1">:</span><span class="s2">1</span><span class="s1">:-</span><span class="s2">1</span><span class="s1">])</span>
+print(x2)
+print(x2[:<span class="s0">, </span><span class="s2">0</span><span class="s1">])</span>
+print(x2[<span class="s2">0</span><span class="s0">, </span><span class="s1">:])</span>
+print(x2[<span class="s2">1</span><span class="s1">])</span>
+print(x2[<span class="s2">0</span><span class="s1">])</span>
+x2_sub = x2[:<span class="s2">2</span><span class="s0">, </span><span class="s1">:</span><span class="s2">2</span><span class="s1">]</span>
+print(x2_sub)
+x2_sub[<span class="s2">0</span><span class="s0">, </span><span class="s2">0</span><span class="s1">] = </span><span class="s2">99</span>
+<span class="s1">print(x2_sub)</span>
+print(x2)
+x2_sub_copy = x2[:<span class="s2">2</span><span class="s0">, </span><span class="s1">:</span><span class="s2">2</span><span class="s1">].copy()</span>
+print(x2_sub_copy)
+x2_sub_copy[<span class="s2">0</span><span class="s0">, </span><span class="s2">0</span><span class="s1">] = </span><span class="s2">10</span>
+<span class="s1">print(x2_sub_copy)</span>
+print(x2)
+x1_sub_copy = x1[:<span class="s2">5</span><span class="s1">].copy()</span>
+print(x1_sub_copy)
+x1_sub_copy = np.random.randint(<span class="s2">3</span><span class="s0">, </span><span class="s2">10</span><span class="s0">, </span><span class="s2">5</span><span class="s1">)</span>
+print(x1_sub_copy)
+print(x1)
+
+<span class="s4"># Reshaping of Arrays</span>
+<span class="s1">grid = np.arange(</span><span class="s2">1</span><span class="s0">, </span><span class="s2">10</span><span class="s1">)</span>
+print(grid)
+grid = np.arange(<span class="s2">1</span><span class="s0">, </span><span class="s2">10</span><span class="s1">).reshape((</span><span class="s2">3</span><span class="s0">, </span><span class="s2">3</span><span class="s1">))</span>
+print(grid)
+x = np.array([<span class="s2">1</span><span class="s0">, </span><span class="s2">2</span><span class="s0">, </span><span class="s2">3</span><span class="s1">])</span>
+print(x)
+print(x.reshape((<span class="s2">1</span><span class="s0">, </span><span class="s2">3</span><span class="s1">)))</span>
+print(x[np.newaxis<span class="s0">, </span><span class="s1">:])</span>
+print(x.reshape((<span class="s2">3</span><span class="s0">, </span><span class="s2">1</span><span class="s1">)))</span>
+print(x[:<span class="s0">, </span><span class="s1">np.newaxis])</span>
+
+<span class="s4"># Array Concatenation and Splitting</span>
+<span class="s1">x = np.array([</span><span class="s2">1</span><span class="s0">, </span><span class="s2">2</span><span class="s0">, </span><span class="s2">3</span><span class="s1">])</span>
+y = np.array([<span class="s2">3</span><span class="s0">, </span><span class="s2">2</span><span class="s0">, </span><span class="s2">1</span><span class="s1">])</span>
+print(np.concatenate([x<span class="s0">, </span><span class="s1">y]))</span>
+z = [<span class="s2">99</span><span class="s0">, </span><span class="s2">99</span><span class="s0">, </span><span class="s2">99</span><span class="s1">]</span>
+print(np.concatenate([x<span class="s0">, </span><span class="s1">y</span><span class="s0">, </span><span class="s1">z]))</span>
+grid = np.array([[<span class="s2">1</span><span class="s0">, </span><span class="s2">2</span><span class="s0">, </span><span class="s2">3</span><span class="s1">]</span><span class="s0">,</span>
+                 <span class="s1">[</span><span class="s2">4</span><span class="s0">, </span><span class="s2">5</span><span class="s0">, </span><span class="s2">6</span><span class="s1">]])</span>
+print(grid)
+grid2 = np.arange(<span class="s2">1</span><span class="s0">, </span><span class="s2">7</span><span class="s1">).reshape((</span><span class="s2">2</span><span class="s0">, </span><span class="s2">3</span><span class="s1">))</span>
+print(grid2)
+print(np.concatenate([grid<span class="s0">, </span><span class="s1">grid]))</span>
+print(np.concatenate([grid<span class="s0">, </span><span class="s1">grid]</span><span class="s0">, </span><span class="s1">axis=</span><span class="s2">0</span><span class="s1">))</span>
+print(np.concatenate([grid<span class="s0">, </span><span class="s1">grid]</span><span class="s0">, </span><span class="s1">axis=</span><span class="s2">1</span><span class="s1">))</span>
+x = np.array([<span class="s2">1</span><span class="s0">, </span><span class="s2">2</span><span class="s0">, </span><span class="s2">3</span><span class="s1">])</span>
+grid = np.array([[<span class="s2">9</span><span class="s0">, </span><span class="s2">8</span><span class="s0">, </span><span class="s2">7</span><span class="s1">]</span><span class="s0">,</span>
+                <span class="s1">[</span><span class="s2">6</span><span class="s0">, </span><span class="s2">5</span><span class="s0">, </span><span class="s2">4</span><span class="s1">]])</span>
+print(np.vstack([x<span class="s0">, </span><span class="s1">grid]))</span>
+y = np.array([[<span class="s2">10</span><span class="s1">]</span>
+                 <span class="s0">, </span><span class="s1">[</span><span class="s2">20</span><span class="s1">]])</span>
+print(np.hstack([grid<span class="s0">, </span><span class="s1">y]))</span>
+y2 = np.array([<span class="s2">10</span><span class="s0">, </span><span class="s2">20</span><span class="s1">]).reshape((</span><span class="s2">2</span><span class="s0">, </span><span class="s2">1</span><span class="s1">))</span>
+print(y2)
+print(np.hstack([grid<span class="s0">, </span><span class="s1">y2]))</span>
+print(np.concatenate([grid<span class="s0">, </span><span class="s1">y2]</span><span class="s0">, </span><span class="s1">axis=</span><span class="s2">1</span><span class="s1">))</span>
+x = [<span class="s2">1</span><span class="s0">, </span><span class="s2">2</span><span class="s0">, </span><span class="s2">3</span><span class="s0">, </span><span class="s2">99</span><span class="s0">, </span><span class="s2">99</span><span class="s0">, </span><span class="s2">3</span><span class="s0">, </span><span class="s2">2</span><span class="s0">, </span><span class="s2">1</span><span class="s1">]</span>
+x1<span class="s0">, </span><span class="s1">x2</span><span class="s0">, </span><span class="s1">x3 = np.split(x</span><span class="s0">, </span><span class="s1">[</span><span class="s2">3</span><span class="s0">, </span><span class="s2">5</span><span class="s1">])</span>
+print(x1<span class="s0">, </span><span class="s1">x2</span><span class="s0">, </span><span class="s1">x3)</span>
+x1<span class="s0">, </span><span class="s1">x2</span><span class="s0">, </span><span class="s1">x3</span><span class="s0">, </span><span class="s1">x4 = np.split(x</span><span class="s0">, </span><span class="s1">[</span><span class="s2">1</span><span class="s0">, </span><span class="s2">3</span><span class="s0">, </span><span class="s2">5</span><span class="s1">])</span>
+print(x1<span class="s0">, </span><span class="s1">x2</span><span class="s0">, </span><span class="s1">x3</span><span class="s0">, </span><span class="s1">x4)</span>
+grid = np.arange(<span class="s2">16</span><span class="s1">).reshape((</span><span class="s2">4</span><span class="s0">, </span><span class="s2">4</span><span class="s1">))</span>
+print(grid)
+upper<span class="s0">, </span><span class="s1">lower = np.vsplit(grid</span><span class="s0">, </span><span class="s1">[</span><span class="s2">2</span><span class="s1">])</span>
+print(upper)
+print(lower)
+left<span class="s0">, </span><span class="s1">right = np.hsplit(grid</span><span class="s0">, </span><span class="s1">[</span><span class="s2">2</span><span class="s1">])</span>
+print(left)
+print(right)
+
+<span class="s4"># Computation on NumPy Arrays: Universal Functions</span>
+<span class="s1">np.random.seed(</span><span class="s2">0</span><span class="s1">)</span>
+<span class="s0">def </span><span class="s1">compute_reciprocals(values):</span>
+    output = np.empty(len(values))
+    <span class="s0">for </span><span class="s1">i </span><span class="s0">in </span><span class="s1">range(len(values)):</span>
+        output[i] = <span class="s2">1.0 </span><span class="s1">/ values[i]</span>
+    <span class="s0">return </span><span class="s1">output</span>
+
+values = np.random.randint(<span class="s2">1</span><span class="s0">, </span><span class="s2">10</span><span class="s0">, </span><span class="s1">size=</span><span class="s2">5</span><span class="s1">)</span>
+print(compute_reciprocals(values))
+
+<span class="s4"># Exploring NumPy's UFuncs</span>
+<span class="s1">x = np.arange(</span><span class="s2">4</span><span class="s1">)</span>
+print(<span class="s3">&quot;x =&quot;</span><span class="s0">, </span><span class="s1">x)</span>
+print(<span class="s3">&quot;x + 5 =&quot;</span><span class="s0">, </span><span class="s1">x+</span><span class="s2">5</span><span class="s1">)</span>
+print(<span class="s3">&quot;x - 5 =&quot;</span><span class="s0">, </span><span class="s1">x-</span><span class="s2">5</span><span class="s1">)</span>
+print(<span class="s3">&quot;x * 2 =&quot;</span><span class="s0">, </span><span class="s1">x*</span><span class="s2">2</span><span class="s1">)</span>
+print(<span class="s3">&quot;x / 2 =&quot;</span><span class="s0">, </span><span class="s1">x/</span><span class="s2">2</span><span class="s1">)</span>
+print(<span class="s3">&quot;-x =&quot;</span><span class="s0">, </span><span class="s1">-x)</span>
+print(<span class="s3">&quot;x ^ 2 =&quot;</span><span class="s0">, </span><span class="s1">x**</span><span class="s2">2</span><span class="s1">)</span>
+print(<span class="s3">&quot;x % 2 =&quot;</span><span class="s0">, </span><span class="s1">x%</span><span class="s2">2</span><span class="s1">)</span>
+print(-(<span class="s2">0.5</span><span class="s1">*x +</span><span class="s2">1</span><span class="s1">) ** </span><span class="s2">2</span><span class="s1">)</span>
+print(-(<span class="s2">1 </span><span class="s1">+ </span><span class="s2">0.5 </span><span class="s1">* x) ** </span><span class="s2">2</span><span class="s1">)</span>
+print(x+<span class="s2">2</span><span class="s1">)</span>
+print(np.add(x<span class="s0">, </span><span class="s2">2</span><span class="s1">))</span>
+print(np.subtract(x<span class="s0">, </span><span class="s2">2</span><span class="s1">))</span>
+print(np.negative(x))
+print(np.multiply(x<span class="s0">, </span><span class="s2">2</span><span class="s1">))</span>
+print(np.divide(x<span class="s0">, </span><span class="s2">2</span><span class="s1">))</span>
+print(np.floor_divide(x<span class="s0">, </span><span class="s2">2</span><span class="s1">))</span>
+print(np.power(x<span class="s0">, </span><span class="s2">2</span><span class="s1">))</span>
+print(np.mod(x<span class="s0">, </span><span class="s2">2</span><span class="s1">))</span>
+print(np.mod(x<span class="s0">, </span><span class="s2">5</span><span class="s1">))</span>
+x = np.array([-<span class="s2">2</span><span class="s0">, </span><span class="s1">-</span><span class="s2">1</span><span class="s0">, </span><span class="s2">0</span><span class="s0">, </span><span class="s2">1</span><span class="s0">, </span><span class="s2">2</span><span class="s1">])</span>
+print(abs(x))
+print(np.absolute(x))
+print(np.abs(x))
+x = np.array([<span class="s2">3</span><span class="s1">-</span><span class="s2">4j</span><span class="s0">, </span><span class="s2">4</span><span class="s1">-</span><span class="s2">3j</span><span class="s0">, </span><span class="s2">2</span><span class="s1">+</span><span class="s2">0j</span><span class="s0">, </span><span class="s2">0</span><span class="s1">+</span><span class="s2">1j</span><span class="s1">])</span>
+print(np.abs(x))
+theta = np.linspace(<span class="s2">0</span><span class="s0">, </span><span class="s1">np.pi</span><span class="s0">, </span><span class="s2">3</span><span class="s1">)</span>
+print(theta)
+print(np.sin(theta))
+print(np.cos(theta))
+print(np.tan(theta))
+x = [-<span class="s2">1</span><span class="s0">, </span><span class="s2">0</span><span class="s0">, </span><span class="s2">1</span><span class="s1">]</span>
+print(np.arcsin(x))
+print(np.arccos(x))
+print(np.arctan(x))
+x = [<span class="s2">1</span><span class="s0">, </span><span class="s2">2</span><span class="s0">, </span><span class="s2">3</span><span class="s1">]</span>
+print(np.exp(x))
+print(np.exp2(x))
+print(np.power(<span class="s2">2</span><span class="s0">, </span><span class="s1">x))</span>
+print(np.power(x<span class="s0">, </span><span class="s2">2</span><span class="s1">))</span>
+print(np.power(<span class="s2">3</span><span class="s0">, </span><span class="s1">x))</span>
+x = np.array([<span class="s2">1</span><span class="s0">, </span><span class="s2">2</span><span class="s0">, </span><span class="s2">4</span><span class="s0">, </span><span class="s2">10</span><span class="s1">])</span>
+print(np.log(x))
+print(np.log2(x))
+print(np.log10(x))
+x = [<span class="s2">0</span><span class="s0">, </span><span class="s2">0.001</span><span class="s0">, </span><span class="s2">0.01</span><span class="s0">, </span><span class="s2">0.1</span><span class="s1">]</span>
+print(np.expm1(x))
+print(np.log1p(x))
+
+<span class="s0">from </span><span class="s1">scipy </span><span class="s0">import </span><span class="s1">special</span>
+x = [<span class="s2">1</span><span class="s0">, </span><span class="s2">5</span><span class="s0">, </span><span class="s2">10</span><span class="s1">]</span>
+print(<span class="s3">&quot;gamma(x) =&quot;</span><span class="s0">, </span><span class="s1">special.gamma(x))</span>
+print(<span class="s3">&quot;ln|gamma(x)| =&quot;</span><span class="s0">, </span><span class="s1">special.gammaln(x))</span>
+print(<span class="s3">&quot;beta(x, 2) =&quot;</span><span class="s0">, </span><span class="s1">special.beta(x</span><span class="s0">, </span><span class="s2">2</span><span class="s1">))</span>
+x = np.array([<span class="s2">0</span><span class="s0">, </span><span class="s2">0.3</span><span class="s0">, </span><span class="s2">0.7</span><span class="s0">, </span><span class="s2">1.0</span><span class="s1">])</span>
+print(<span class="s3">&quot;erf(x) =&quot;</span><span class="s0">, </span><span class="s1">special.erf(x))</span>
+print(<span class="s3">&quot;erfc(x) =&quot;</span><span class="s0">, </span><span class="s1">special.erfc(x))</span>
+print(<span class="s3">&quot;erfinv(x) =&quot;</span><span class="s0">, </span><span class="s1">special.erfinv(x))</span>
+
+<span class="s4"># Advanced Ufunc Features</span>
+<span class="s1">x = np.arange(</span><span class="s2">5</span><span class="s1">)</span>
+y = np.empty(<span class="s2">5</span><span class="s1">)</span>
+np.multiply(x<span class="s0">, </span><span class="s2">10</span><span class="s0">, </span><span class="s1">out=y)</span>
+print(y)
+y = np.zeros(<span class="s2">10</span><span class="s1">)</span>
+np.power(<span class="s2">2</span><span class="s0">, </span><span class="s1">x</span><span class="s0">, </span><span class="s1">out=y[::</span><span class="s2">2</span><span class="s1">])</span>
+print(y)
+x = np.arange(<span class="s2">1</span><span class="s0">, </span><span class="s2">6</span><span class="s1">)</span>
+print(x)
+print(np.add.reduce(x))
+print(np.subtract.reduce(x))
+print(np.multiply.reduce(x))
+print(np.add.accumulate(x))
+print(np.subtract.accumulate(x))
+x = np.arange(<span class="s2">1</span><span class="s0">, </span><span class="s2">6</span><span class="s1">)</span>
+print(np.multiply.outer(x<span class="s0">, </span><span class="s1">x))</span>
+
+<span class="s4"># Aggregations: Min, Max, and Everything in Between</span>
+<span class="s1">L = np.random.random(</span><span class="s2">100</span><span class="s1">)</span>
+print(sum(L))
+print(np.sum(L))
+big_array = np.random.rand(<span class="s2">10000000</span><span class="s1">)</span>
+print(np.min(big_array)<span class="s0">, </span><span class="s1">np.max(big_array))</span>
+
+M = np.random.random((<span class="s2">3</span><span class="s0">, </span><span class="s2">4</span><span class="s1">))</span>
+print(M)
+print(M.sum())
+print(M.min(axis=<span class="s2">0</span><span class="s1">))</span>
+print(M.min(axis=<span class="s2">1</span><span class="s1">))</span>
+M2 = np.random.random(<span class="s2">20</span><span class="s1">)</span>
+print(np.nanpercentile(M2<span class="s0">, </span><span class="s2">100</span><span class="s1">))</span>
+print(np.max(M2))
+print(np.var(M2))
+print(np.std(M2))
+
+<span class="s0">import </span><span class="s1">pandas </span><span class="s0">as </span><span class="s1">pd</span>
+data = pd.read_csv(<span class="s3">'https://raw.githubusercontent.com/jakevdp/PythonDataScienceHandbook/master/notebooks/data/president_heights.csv'</span><span class="s1">)</span>
+height = np.array(data[<span class="s3">'height(cm)'</span><span class="s1">])</span>
+print(height)
+print(<span class="s3">&quot;Mean height: &quot;</span><span class="s0">, </span><span class="s1">height.mean())</span>
+print(<span class="s3">&quot;Standard deviation:&quot;</span><span class="s0">, </span><span class="s1">height.std())</span>
+print(<span class="s3">&quot;Minimum height:&quot;</span><span class="s0">, </span><span class="s1">np.nanmin(height))</span>
+print(<span class="s3">&quot;Maximum height:&quot;</span><span class="s0">, </span><span class="s1">np.nanmax(height))</span>
+print(<span class="s3">&quot;25th percentile:&quot;</span><span class="s0">, </span><span class="s1">np.percentile(height</span><span class="s0">, </span><span class="s2">25</span><span class="s1">))</span>
+print(<span class="s3">&quot;Median:&quot;</span><span class="s0">, </span><span class="s1">np.median(height))</span>
+print(<span class="s3">&quot;75th percentile:&quot;</span><span class="s0">, </span><span class="s1">np.percentile(height</span><span class="s0">, </span><span class="s2">75</span><span class="s1">))</span>
+
+<span class="s0">import </span><span class="s1">matplotlib.pyplot </span><span class="s0">as </span><span class="s1">plt</span>
+<span class="s0">import </span><span class="s1">seaborn; seaborn.set()</span>
+<span class="s4">#plt.hist(height)</span>
+#plt.title(&quot;Height Distribution of US Presidents&quot;)
+#plt.xlabel(&quot;height (cm)&quot;)
+#plt.ylabel(&quot;number&quot;)
+#plt.show();
+
+# Computation on Arrays: Broadcasting
+<span class="s1">a = np.array([</span><span class="s2">0</span><span class="s0">, </span><span class="s2">1</span><span class="s0">, </span><span class="s2">2</span><span class="s1">])</span>
+b = np.array([<span class="s2">5</span><span class="s0">, </span><span class="s2">5</span><span class="s0">, </span><span class="s2">5</span><span class="s1">])</span>
+print(a + b)
+print(a + <span class="s2">5</span><span class="s1">)</span>
+M = np.ones((<span class="s2">3</span><span class="s0">, </span><span class="s2">3</span><span class="s1">))</span>
+print(M)
+print(M + a)
+a = np.arange(<span class="s2">3</span><span class="s1">)</span>
+b = np.arange(<span class="s2">3</span><span class="s1">)[:</span><span class="s0">, </span><span class="s1">np.newaxis]</span>
+print(a)
+print(b)
+c = np.arange(<span class="s2">3</span><span class="s1">).reshape((</span><span class="s2">3</span><span class="s0">, </span><span class="s2">1</span><span class="s1">))</span>
+print(c)
+print(a + b)
+M = np.ones((<span class="s2">2</span><span class="s0">, </span><span class="s2">3</span><span class="s1">))</span>
+a = np.arange(<span class="s2">3</span><span class="s1">)</span>
+print(M + a)
+a = np.arange(<span class="s2">3</span><span class="s1">).reshape((</span><span class="s2">3</span><span class="s0">, </span><span class="s2">1</span><span class="s1">))</span>
+b = np.arange(<span class="s2">3</span><span class="s1">)</span>
+print(a + b)
+<span class="s4"># Broadcasting in Practice</span>
+<span class="s1">X = np.random.random((</span><span class="s2">10</span><span class="s0">, </span><span class="s2">3</span><span class="s1">))</span>
+Xmean = X.mean(<span class="s2">0</span><span class="s1">)</span>
+print(Xmean)
+X_centered = X - Xmean
+x = np.linspace(<span class="s2">0</span><span class="s0">, </span><span class="s2">5</span><span class="s0">, </span><span class="s2">50</span><span class="s1">)</span>
+y = np.linspace(<span class="s2">0</span><span class="s0">, </span><span class="s2">5</span><span class="s0">, </span><span class="s2">50</span><span class="s1">)[:</span><span class="s0">, </span><span class="s1">np.newaxis]</span>
+z = np.sin(x)**<span class="s2">10 </span><span class="s1">+ np.cos(</span><span class="s2">10 </span><span class="s1">+ y * x) * np.cos(x)</span>
+<span class="s4"># plt.imshow(z, origin='lower', extent=[0, 5, 0, 5], cmap='viridis')</span>
+# plt.colorbar()
+# plt.show();
+
+# Comparisons, Masks, and Boolean Logic
+<span class="s1">rainfall = pd.read_csv(</span><span class="s3">'https://raw.githubusercontent.com/jakevdp/PythonDataScienceHandbook/master/notebooks/data/Seattle2014.csv'</span><span class="s1">)[</span><span class="s3">'PRCP'</span><span class="s1">].values</span>
+inches = rainfall / <span class="s2">254</span>
+<span class="s1">print(inches.shape)</span>
+<span class="s4"># plt.hist(inches, 40)</span>
+# plt.show()
+<span class="s1">x = np.array([</span><span class="s2">1</span><span class="s0">, </span><span class="s2">2</span><span class="s0">, </span><span class="s2">3</span><span class="s0">, </span><span class="s2">4</span><span class="s0">, </span><span class="s2">5</span><span class="s1">])</span>
+print(x&lt;<span class="s2">3</span><span class="s1">)</span>
+print(x&gt;<span class="s2">3</span><span class="s1">)</span>
+print(x&lt;=<span class="s2">3</span><span class="s1">)</span>
+print(x&gt;=<span class="s2">3</span><span class="s1">)</span>
+print(x!=<span class="s2">3</span><span class="s1">)</span>
+print(x==<span class="s2">3</span><span class="s1">)</span>
+print((<span class="s2">2</span><span class="s1">*x) == (x**</span><span class="s2">2</span><span class="s1">))</span>
+rng = np.random.RandomState(<span class="s2">0</span><span class="s1">)</span>
+x = rng.randint(<span class="s2">10</span><span class="s0">, </span><span class="s1">size=(</span><span class="s2">3</span><span class="s0">, </span><span class="s2">4</span><span class="s1">))</span>
+print(rng)
+print(x)
+print(x&lt;<span class="s2">6</span><span class="s1">)</span>
+print(np.count_nonzero(x&lt;<span class="s2">6</span><span class="s1">))</span>
+print(np.sum(x&lt;<span class="s2">6</span><span class="s1">))</span>
+print(np.sum((x &lt; <span class="s2">6</span><span class="s1">)</span><span class="s0">, </span><span class="s1">axis=</span><span class="s2">1</span><span class="s1">))</span>
+print(np.any(x &gt; <span class="s2">8</span><span class="s1">))</span>
+print(np.all(x &lt; <span class="s2">0</span><span class="s1">))</span>
+print(np.all(x &lt; <span class="s2">10</span><span class="s1">))</span>
+print(np.any(x == <span class="s2">6</span><span class="s1">))</span>
+print(np.any((x == <span class="s2">6</span><span class="s1">)</span><span class="s0">, </span><span class="s1">axis=</span><span class="s2">1</span><span class="s1">))</span>
+print(np.count_nonzero(inches &gt;= <span class="s2">2</span><span class="s1">))</span>
+print(np.sum((inches &gt; <span class="s2">0.5</span><span class="s1">) &amp; (inches &lt; </span><span class="s2">1</span><span class="s1">)))</span>
+print(np.sum(~((inches &lt;= <span class="s2">0.5</span><span class="s1">) | (inches &gt;= </span><span class="s2">1</span><span class="s1">))))</span>
+print(<span class="s3">&quot;Number days without rain :&quot;</span><span class="s0">, </span><span class="s1">np.sum(inches == </span><span class="s2">0</span><span class="s1">))</span>
+print(<span class="s3">&quot;Number days with rain:&quot;</span><span class="s0">, </span><span class="s1">np.sum(inches &gt; </span><span class="s2">0</span><span class="s1">))</span>
+print(<span class="s3">&quot;Days with more than 0.5 inches:&quot;</span><span class="s0">, </span><span class="s1">np.sum(inches &gt; </span><span class="s2">0.5</span><span class="s1">))</span>
+print(<span class="s3">&quot;Rainy days with &lt; 0.1 inches:&quot;</span><span class="s0">, </span><span class="s1">np.sum((inches &gt; </span><span class="s2">0</span><span class="s1">) &amp; (inches &lt; </span><span class="s2">0.1</span><span class="s1">)))</span>
+print(x&lt;<span class="s2">5</span><span class="s1">)</span>
+print(x[x&lt;<span class="s2">5</span><span class="s1">])</span>
+rainy = (inches &gt; <span class="s2">0</span><span class="s1">)</span>
+summer = (np.arange(<span class="s2">365</span><span class="s1">) - </span><span class="s2">172 </span><span class="s1">&lt; </span><span class="s2">90</span><span class="s1">) &amp; (np.arange(</span><span class="s2">365</span><span class="s1">) - </span><span class="s2">172 </span><span class="s1">&gt; </span><span class="s2">0</span><span class="s1">)</span>
+print(<span class="s3">&quot;Median precip on rainy days in 2014 (inches):&quot;</span><span class="s0">, </span><span class="s1">np.median(inches[rainy]))</span>
+print(<span class="s3">&quot;Median precip on summer days in 2014 (inches):&quot;</span><span class="s0">, </span><span class="s1">np.median(inches[summer]))</span>
+print(<span class="s3">&quot;Maximum precip on summer days in 2014 (inches):&quot;</span><span class="s0">, </span><span class="s1">np.max(inches[summer]))</span>
+print(<span class="s3">&quot;Median precip on non-summer rainy days (inches):&quot;</span><span class="s0">, </span><span class="s1">np.median(inches[rainy &amp; ~summer]))</span>
+print(bool(<span class="s2">42</span><span class="s1">)</span><span class="s0">, </span><span class="s1">bool(</span><span class="s2">0</span><span class="s1">))</span>
+print(bool(<span class="s2">42 </span><span class="s0">and </span><span class="s2">0</span><span class="s1">))</span>
+print(bool(<span class="s2">42 </span><span class="s0">or </span><span class="s2">0</span><span class="s1">))</span>
+
+<span class="s4"># Fancy indexing</span>
+<span class="s1">rand = np.random.RandomState(</span><span class="s2">42</span><span class="s1">)</span>
+x = rand.randint(<span class="s2">100</span><span class="s0">, </span><span class="s1">size=</span><span class="s2">10</span><span class="s1">)</span>
+print(x)
+print(x[<span class="s2">3</span><span class="s1">]</span><span class="s0">, </span><span class="s1">x[</span><span class="s2">7</span><span class="s1">]</span><span class="s0">, </span><span class="s1">x[</span><span class="s2">2</span><span class="s1">])</span>
+ind = [<span class="s2">3</span><span class="s0">, </span><span class="s2">7</span><span class="s0">, </span><span class="s2">4</span><span class="s1">]</span>
+print(x[ind])
+ind = np.array([[<span class="s2">3</span><span class="s0">, </span><span class="s2">7</span><span class="s1">]</span><span class="s0">,</span>
+               <span class="s1">[</span><span class="s2">4</span><span class="s0">, </span><span class="s2">5</span><span class="s1">]])</span>
+print(x[ind])
+X = np.arange(<span class="s2">12</span><span class="s1">).reshape((</span><span class="s2">3</span><span class="s0">, </span><span class="s2">4</span><span class="s1">))</span>
+print(X)
+row = np.array([<span class="s2">0</span><span class="s0">, </span><span class="s2">1</span><span class="s0">, </span><span class="s2">2</span><span class="s1">])</span>
+col = np.array([<span class="s2">2</span><span class="s0">, </span><span class="s2">1</span><span class="s0">, </span><span class="s2">3</span><span class="s1">])</span>
+print(X[row<span class="s0">, </span><span class="s1">col])</span>
+print(X[row[:<span class="s0">, </span><span class="s1">np.newaxis]</span><span class="s0">, </span><span class="s1">col])</span>
+print(X[<span class="s2">2</span><span class="s0">, </span><span class="s1">[</span><span class="s2">2</span><span class="s0">, </span><span class="s2">0</span><span class="s0">, </span><span class="s2">1</span><span class="s1">]])</span>
+print(X[<span class="s2">1</span><span class="s1">:</span><span class="s0">, </span><span class="s1">[</span><span class="s2">2</span><span class="s0">, </span><span class="s2">0</span><span class="s0">, </span><span class="s2">1</span><span class="s1">]])</span>
+print(X[:<span class="s2">2</span><span class="s0">, </span><span class="s1">[</span><span class="s2">2</span><span class="s0">, </span><span class="s2">1</span><span class="s1">]])</span>
+mask = np.array([<span class="s2">1</span><span class="s0">, </span><span class="s2">0</span><span class="s0">, </span><span class="s2">1</span><span class="s0">, </span><span class="s2">0</span><span class="s1">]</span><span class="s0">, </span><span class="s1">dtype=bool)</span>
+print(X[row[:<span class="s0">, </span><span class="s1">np.newaxis]</span><span class="s0">, </span><span class="s1">mask])</span>
+
+<span class="s4"># Example: Selecting Random Points</span>
+<span class="s1">mean = [</span><span class="s2">0</span><span class="s0">, </span><span class="s2">0</span><span class="s1">]</span>
+cov = [[<span class="s2">1</span><span class="s0">, </span><span class="s2">2</span><span class="s1">]</span><span class="s0">,</span>
+       <span class="s1">[</span><span class="s2">2</span><span class="s0">, </span><span class="s2">5</span><span class="s1">]]</span>
+X = rand.multivariate_normal(mean<span class="s0">, </span><span class="s1">cov</span><span class="s0">, </span><span class="s2">100</span><span class="s1">)</span>
+print(X.shape)
+<span class="s4"># plt.scatter(X[:, 0], X[:, 1])</span>
+# plt.show()
+<span class="s1">indices = np.random.choice(X.shape[</span><span class="s2">0</span><span class="s1">]</span><span class="s0">, </span><span class="s2">20</span><span class="s0">, </span><span class="s1">replace=</span><span class="s0">False</span><span class="s1">)</span>
+print(indices)
+selection = X[indices]
+print(selection.shape)
+<span class="s4"># plt.scatter(X[:, 0], X[:, 1], alpha=0.3)</span>
+# plt.scatter(selection[:, 0], selection[:, 1], facecolor='none', s=200)
+# plt.show()
+
+# Modifying Values with Fancy Indexing
+<span class="s1">x = np.arange(</span><span class="s2">10</span><span class="s1">)</span>
+i = np.array([<span class="s2">2</span><span class="s0">, </span><span class="s2">1</span><span class="s0">, </span><span class="s2">8</span><span class="s0">, </span><span class="s2">4</span><span class="s1">])</span>
+x[i] = <span class="s2">99</span>
+<span class="s1">print(x)</span>
+x[i] -= <span class="s2">10</span>
+<span class="s1">print(x)</span>
+x = np.zeros(<span class="s2">10</span><span class="s1">)</span>
+x[[<span class="s2">0</span><span class="s0">, </span><span class="s2">0</span><span class="s1">]] = [</span><span class="s2">4</span><span class="s0">, </span><span class="s2">6</span><span class="s1">]</span>
+print(x)
+i = [<span class="s2">2</span><span class="s0">, </span><span class="s2">3</span><span class="s0">, </span><span class="s2">3</span><span class="s0">, </span><span class="s2">4</span><span class="s0">, </span><span class="s2">4</span><span class="s0">, </span><span class="s2">4</span><span class="s1">]</span>
+x[i] += <span class="s2">1</span>
+<span class="s1">print(x)</span>
+x = np.zeros(<span class="s2">10</span><span class="s1">)</span>
+np.add.at(x<span class="s0">, </span><span class="s1">i</span><span class="s0">, </span><span class="s2">1</span><span class="s1">)</span>
+print(x)
+np.random.seed(<span class="s2">42</span><span class="s1">)</span>
+x = np.random.randn(<span class="s2">100</span><span class="s1">)</span>
+bins = np.linspace(-<span class="s2">5</span><span class="s0">, </span><span class="s2">5</span><span class="s0">, </span><span class="s2">20</span><span class="s1">)</span>
+counts = np.zeros_like(bins)
+i = np.searchsorted(bins<span class="s0">, </span><span class="s1">x)</span>
+np.add.at(counts<span class="s0">, </span><span class="s1">i</span><span class="s0">, </span><span class="s2">1</span><span class="s1">)</span>
+<span class="s4"># plt.plot(bins, counts, linestyle='steps')</span>
+# plt.show()
+
+# Sorting Arrays
+<span class="s0">def </span><span class="s1">selection_sort(x):</span>
+    <span class="s0">for </span><span class="s1">i </span><span class="s0">in </span><span class="s1">range(len(x)):</span>
+        swap = i + np.argmin(x[i:])
+        (x[i]<span class="s0">, </span><span class="s1">x[swap]) = (x[swap]</span><span class="s0">, </span><span class="s1">x[i])</span>
+    <span class="s0">return </span><span class="s1">x</span>
+x = np.array([<span class="s2">2</span><span class="s0">, </span><span class="s2">1</span><span class="s0">, </span><span class="s2">4</span><span class="s0">, </span><span class="s2">3</span><span class="s0">, </span><span class="s2">5</span><span class="s1">])</span>
+print(selection_sort(x))
+x = np.array([<span class="s2">2</span><span class="s0">, </span><span class="s2">1</span><span class="s0">, </span><span class="s2">4</span><span class="s0">, </span><span class="s2">3</span><span class="s0">, </span><span class="s2">5</span><span class="s1">])</span>
+print(np.argmin(x))
+print(x)
+
+<span class="s0">def </span><span class="s1">bogosort(x):</span>
+    <span class="s0">while </span><span class="s1">np.any(x[:-</span><span class="s2">1</span><span class="s1">] &gt; x[</span><span class="s2">1</span><span class="s1">:]):</span>
+        np.random.shuffle(x)
+    <span class="s0">return </span><span class="s1">x</span>
+x = np.array([<span class="s2">2</span><span class="s0">, </span><span class="s2">1</span><span class="s0">, </span><span class="s2">4</span><span class="s0">, </span><span class="s2">3</span><span class="s0">, </span><span class="s2">5</span><span class="s1">])</span>
+print(x[:-<span class="s2">1</span><span class="s1">])</span>
+print(x[<span class="s2">1</span><span class="s1">:])</span>
+print(bogosort(x))
+x = np.array([<span class="s2">2</span><span class="s0">, </span><span class="s2">1</span><span class="s0">, </span><span class="s2">4</span><span class="s0">, </span><span class="s2">3</span><span class="s0">, </span><span class="s2">5</span><span class="s1">])</span>
+print(np.sort(x))
+print(x)
+x.sort()
+print(x)
+x = np.array([<span class="s2">2</span><span class="s0">, </span><span class="s2">1</span><span class="s0">, </span><span class="s2">4</span><span class="s0">, </span><span class="s2">3</span><span class="s0">, </span><span class="s2">5</span><span class="s1">])</span>
+i = np.argsort(x)
+print(i)
+print(x[i])
+rand = np.random.RandomState(<span class="s2">42</span><span class="s1">)</span>
+X = rand.randint(<span class="s2">0</span><span class="s0">, </span><span class="s2">10</span><span class="s0">, </span><span class="s1">(</span><span class="s2">4</span><span class="s0">, </span><span class="s2">6</span><span class="s1">))</span>
+print(X)
+print(np.sort(X<span class="s0">, </span><span class="s1">axis=</span><span class="s2">0</span><span class="s1">))</span>
+print(np.sort(X<span class="s0">, </span><span class="s1">axis=</span><span class="s2">1</span><span class="s1">))</span>
+x = np.array([<span class="s2">7</span><span class="s0">, </span><span class="s2">2</span><span class="s0">, </span><span class="s2">3</span><span class="s0">, </span><span class="s2">1</span><span class="s0">, </span><span class="s2">6</span><span class="s0">, </span><span class="s2">5</span><span class="s0">, </span><span class="s2">4</span><span class="s1">])</span>
+print(np.partition(x<span class="s0">, </span><span class="s2">3</span><span class="s1">))</span>
+print(np.partition(x<span class="s0">, </span><span class="s2">2</span><span class="s1">))</span>
+print(np.partition(x<span class="s0">, </span><span class="s2">1</span><span class="s1">))</span>
+print(np.partition(X<span class="s0">, </span><span class="s2">2</span><span class="s0">, </span><span class="s1">axis=</span><span class="s2">1</span><span class="s1">))</span>
+print(np.partition(X<span class="s0">, </span><span class="s2">3</span><span class="s0">, </span><span class="s1">axis=</span><span class="s2">1</span><span class="s1">))</span>
+X = rand.rand(<span class="s2">10</span><span class="s0">, </span><span class="s2">2</span><span class="s1">)</span>
+print(X)
+<span class="s4"># plt.scatter(X[:, 0], X[:, 1], s=100)</span>
+# plt.show()
+<span class="s1">dist_sq = np.sum((X[:</span><span class="s0">, </span><span class="s1">np.newaxis</span><span class="s0">, </span><span class="s1">:] - X[np.newaxis</span><span class="s0">, </span><span class="s1">:</span><span class="s0">, </span><span class="s1">:]) ** </span><span class="s2">2</span><span class="s0">, </span><span class="s1">axis=-</span><span class="s2">1</span><span class="s1">)</span>
+differences = X[:<span class="s0">, </span><span class="s1">np.newaxis</span><span class="s0">, </span><span class="s1">:] - X[np.newaxis</span><span class="s0">, </span><span class="s1">:</span><span class="s0">, </span><span class="s1">:]</span>
+print(X[:<span class="s0">, </span><span class="s1">np.newaxis</span><span class="s0">, </span><span class="s1">:])</span>
+print(X[np.newaxis<span class="s0">, </span><span class="s1">:</span><span class="s0">, </span><span class="s1">:])</span>
+print(differences.shape)
+sq_differences = differences ** <span class="s2">2</span>
+<span class="s1">print(sq_differences)</span>
+dist_sq = sq_differences.sum(-<span class="s2">1</span><span class="s1">)</span>
+print(dist_sq)
+nearest = np.argsort(dist_sq<span class="s0">, </span><span class="s1">axis=</span><span class="s2">1</span><span class="s1">)</span>
+print(nearest)
+K = <span class="s2">2</span>
+<span class="s1">nearest_partition = np.argpartition(dist_sq</span><span class="s0">, </span><span class="s1">K+</span><span class="s2">1</span><span class="s0">, </span><span class="s1">axis=</span><span class="s2">1</span><span class="s1">)</span>
+print(nearest_partition)
+<span class="s4"># plt.scatter(X[:, 0], X[:, 1], s=100)</span>
+# K = 2
+# for i in range(X.shape[0]):
+    # for j in nearest_partition[i, :K+1]:
+        # plt.plot(*zip(X[j], X[i]), color='black')
+# plt.show()
+
+# Structured Data: NumPy's Structured Arrays
+<span class="s1">name = [</span><span class="s3">&quot;Alice&quot;</span><span class="s0">, </span><span class="s3">&quot;Bob&quot;</span><span class="s0">, </span><span class="s3">&quot;Cathy&quot;</span><span class="s0">, </span><span class="s3">'Doug'</span><span class="s1">]</span>
+age = [<span class="s2">25</span><span class="s0">, </span><span class="s2">45</span><span class="s0">, </span><span class="s2">37</span><span class="s0">, </span><span class="s2">19</span><span class="s1">]</span>
+weight = [<span class="s2">55.0</span><span class="s0">, </span><span class="s2">85.5</span><span class="s0">, </span><span class="s2">68.0</span><span class="s0">, </span><span class="s2">61.5</span><span class="s1">]</span>
+x = np.zeros(<span class="s2">4</span><span class="s0">, </span><span class="s1">dtype=int)</span>
+data = np.zeros(<span class="s2">4</span><span class="s0">, </span><span class="s1">dtype={</span><span class="s3">'names'</span><span class="s1">:(</span><span class="s3">'name'</span><span class="s0">, </span><span class="s3">'age'</span><span class="s0">, </span><span class="s3">'weight'</span><span class="s1">)</span><span class="s0">,</span>
+                       <span class="s3">'formats'</span><span class="s1">: (</span><span class="s3">'U10'</span><span class="s0">, </span><span class="s3">'i4'</span><span class="s0">, </span><span class="s3">'f8'</span><span class="s1">)})</span>
+print(data.dtype)
+print(data)
+data[<span class="s3">'name'</span><span class="s1">] = name</span>
+data[<span class="s3">'age'</span><span class="s1">] = age</span>
+data[<span class="s3">'weight'</span><span class="s1">] = weight</span>
+print(data)
+print(data[<span class="s3">'name'</span><span class="s1">])</span>
+print(data[<span class="s2">0</span><span class="s1">])</span>
+print(data[-<span class="s2">1</span><span class="s1">][</span><span class="s3">'name'</span><span class="s1">])</span>
+print(data[data[<span class="s3">'age'</span><span class="s1">] &lt; </span><span class="s2">30</span><span class="s1">][</span><span class="s3">'name'</span><span class="s1">])</span>
+print(data[<span class="s3">'age'</span><span class="s1">] &lt; </span><span class="s2">30</span><span class="s1">)</span>
+print(np.dtype({<span class="s3">'names' </span><span class="s1">: (</span><span class="s3">'name'</span><span class="s0">, </span><span class="s3">'age'</span><span class="s0">, </span><span class="s3">'weight'</span><span class="s1">)</span><span class="s0">,</span>
+                <span class="s3">'formats' </span><span class="s1">: (</span><span class="s3">'U10'</span><span class="s0">, </span><span class="s3">'i4'</span><span class="s0">, </span><span class="s3">'f8'</span><span class="s1">)}))</span>
+print(np.dtype({<span class="s3">'names' </span><span class="s1">: (</span><span class="s3">'name'</span><span class="s0">, </span><span class="s3">'age'</span><span class="s0">, </span><span class="s3">'weight'</span><span class="s1">)</span><span class="s0">,</span>
+                <span class="s3">'formats' </span><span class="s1">: ((np.str_</span><span class="s0">, </span><span class="s2">10</span><span class="s1">)</span><span class="s0">, </span><span class="s1">int</span><span class="s0">, </span><span class="s1">np.float32)}))</span>
+tp = np.dtype([(<span class="s3">'id'</span><span class="s0">, </span><span class="s3">'i8'</span><span class="s1">)</span><span class="s0">, </span><span class="s1">(</span><span class="s3">'mat'</span><span class="s0">, </span><span class="s3">'f8'</span><span class="s0">, </span><span class="s1">(</span><span class="s2">3</span><span class="s0">, </span><span class="s2">3</span><span class="s1">))])</span>
+X = np.zeros(<span class="s2">1</span><span class="s0">, </span><span class="s1">dtype=tp)</span>
+print(X)
+print(X[<span class="s2">0</span><span class="s1">])</span>
+print(X[<span class="s3">'mat'</span><span class="s1">][</span><span class="s2">0</span><span class="s1">])</span>
+print(data[<span class="s3">'age'</span><span class="s1">])</span>
+data_rec = data.view(np.recarray)
+print(data_rec.age)</pre>
+</body>
+</html>
