@@ -282,9 +282,6 @@ x=np.zeros(10)
 np.add.at(x,i,1)
 x
 
-#p98~
-
-
 
 
 
