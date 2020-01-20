@@ -1,0 +1,580 @@
+<html>
+<head>
+<title>PDSpandas.py</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #808080;}
+.s3 { color: #6897bb;}
+.s4 { color: #6a8759;}
+.s5 { color: #629755; font-style: italic;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+PDSpandas.py</font>
+</center></td></tr></table>
+<pre><span class="s0">import </span><span class="s1">pandas </span><span class="s0">as </span><span class="s1">pd</span>
+<span class="s1">print(pd.__version__)</span>
+<span class="s0">import </span><span class="s1">numpy </span><span class="s0">as </span><span class="s1">np</span>
+
+<span class="s2"># Introducing Pandas Objects</span>
+<span class="s1">data = pd.Series([</span><span class="s3">0.25</span><span class="s0">, </span><span class="s3">0.5</span><span class="s0">, </span><span class="s3">0.75</span><span class="s0">, </span><span class="s3">1.0</span><span class="s1">])</span>
+<span class="s1">print(data)</span>
+<span class="s1">print(data.values)</span>
+<span class="s1">print(data.index)</span>
+<span class="s1">print(data[</span><span class="s3">1</span><span class="s1">])</span>
+<span class="s1">print(data[</span><span class="s3">1</span><span class="s1">:</span><span class="s3">3</span><span class="s1">])</span>
+<span class="s1">data = pd.Series([</span><span class="s3">0.25</span><span class="s0">, </span><span class="s3">0.5</span><span class="s0">, </span><span class="s3">0.75</span><span class="s0">, </span><span class="s3">1.0</span><span class="s1">]</span><span class="s0">,</span>
+                 <span class="s1">index = [</span><span class="s4">'a'</span><span class="s0">, </span><span class="s4">'b'</span><span class="s0">, </span><span class="s4">'d'</span><span class="s0">, </span><span class="s4">'c'</span><span class="s1">])</span>
+<span class="s1">print(data)</span>
+<span class="s1">print(data[</span><span class="s4">'d'</span><span class="s1">])</span>
+<span class="s1">data = pd.Series([</span><span class="s3">0.25</span><span class="s0">, </span><span class="s3">0.5</span><span class="s0">, </span><span class="s3">0.75</span><span class="s0">, </span><span class="s3">1.0</span><span class="s1">]</span><span class="s0">,</span>
+                 <span class="s1">index = [</span><span class="s3">2</span><span class="s0">, </span><span class="s3">5</span><span class="s0">, </span><span class="s3">3</span><span class="s0">, </span><span class="s3">7</span><span class="s1">])</span>
+<span class="s1">print(data)</span>
+<span class="s1">print(data[</span><span class="s3">2</span><span class="s1">])</span>
+<span class="s1">population_dict = {</span><span class="s4">'California'</span><span class="s1">: </span><span class="s3">38332521</span><span class="s0">,</span>
+                   <span class="s4">'Texas'</span><span class="s1">: </span><span class="s3">26448193</span><span class="s0">,</span>
+                   <span class="s4">'New York'</span><span class="s1">: </span><span class="s3">19651127</span><span class="s0">,</span>
+                   <span class="s4">'Florida'</span><span class="s1">: </span><span class="s3">19552860</span><span class="s0">,</span>
+                   <span class="s4">'Illinois'</span><span class="s1">: </span><span class="s3">12882135</span><span class="s1">}</span>
+<span class="s1">print(population_dict)</span>
+<span class="s1">population = pd.Series(population_dict)</span>
+<span class="s1">print(population)</span>
+<span class="s1">print(population[</span><span class="s4">'California'</span><span class="s1">])</span>
+<span class="s1">print(population[</span><span class="s4">'California'</span><span class="s1">:</span><span class="s4">'Illinois'</span><span class="s1">])</span>
+<span class="s1">print(pd.Series([</span><span class="s3">2</span><span class="s0">, </span><span class="s3">4</span><span class="s0">, </span><span class="s3">6</span><span class="s1">]))</span>
+<span class="s1">print(pd.Series(</span><span class="s3">5</span><span class="s0">, </span><span class="s1">index = [</span><span class="s3">100</span><span class="s0">, </span><span class="s3">200</span><span class="s0">, </span><span class="s3">300</span><span class="s1">]))</span>
+<span class="s1">print(pd.Series({</span><span class="s3">2</span><span class="s1">:</span><span class="s4">'a'</span><span class="s0">, </span><span class="s3">1</span><span class="s1">:</span><span class="s4">'b'</span><span class="s0">, </span><span class="s3">3</span><span class="s1">:</span><span class="s4">'c'</span><span class="s1">}))</span>
+<span class="s1">print(pd.Series({</span><span class="s3">2</span><span class="s1">:</span><span class="s4">'a'</span><span class="s0">, </span><span class="s3">1</span><span class="s1">:</span><span class="s4">'b'</span><span class="s0">, </span><span class="s3">3</span><span class="s1">:</span><span class="s4">'c'</span><span class="s1">}</span><span class="s0">, </span><span class="s1">index = [</span><span class="s3">3</span><span class="s0">, </span><span class="s3">2</span><span class="s1">]))</span>
+<span class="s1">area_dict = {</span><span class="s4">'California'</span><span class="s1">: </span><span class="s3">423967</span><span class="s0">, </span><span class="s4">'Texas'</span><span class="s1">: </span><span class="s3">695662</span><span class="s0">, </span><span class="s4">'New York'</span><span class="s1">: </span><span class="s3">141297</span><span class="s0">,</span>
+             <span class="s4">'Florida'</span><span class="s1">: </span><span class="s3">170312</span><span class="s0">, </span><span class="s4">'Illinois'</span><span class="s1">: </span><span class="s3">149995</span><span class="s1">}</span>
+<span class="s1">area = pd.Series(area_dict)</span>
+<span class="s1">print(area)</span>
+<span class="s1">states = pd.DataFrame({</span><span class="s4">'population'</span><span class="s1">: population</span><span class="s0">,</span>
+                       <span class="s4">'area'</span><span class="s1">: area})</span>
+<span class="s1">print(states)</span>
+<span class="s1">print(states.index)</span>
+<span class="s1">print(states.columns)</span>
+<span class="s1">print(states[</span><span class="s4">'area'</span><span class="s1">])</span>
+<span class="s1">ex1 = np.random.randint(</span><span class="s3">5</span><span class="s0">, </span><span class="s3">10</span><span class="s0">, </span><span class="s1">(</span><span class="s3">3</span><span class="s0">, </span><span class="s3">4</span><span class="s1">))</span>
+<span class="s1">print(ex1)</span>
+<span class="s1">print(ex1[:</span><span class="s0">,</span><span class="s3">0</span><span class="s1">])</span>
+<span class="s1">print(ex1[</span><span class="s3">1</span><span class="s1">])</span>
+<span class="s1">print(ex1[</span><span class="s3">2</span><span class="s1">])</span>
+<span class="s1">print(population)</span>
+<span class="s1">print(pd.DataFrame(population</span><span class="s0">, </span><span class="s1">columns = [</span><span class="s4">'population'</span><span class="s1">]))</span>
+<span class="s1">data = [{</span><span class="s4">'a'</span><span class="s1">: i</span><span class="s0">, </span><span class="s4">'b'</span><span class="s1">: </span><span class="s3">2 </span><span class="s1">* i}</span>
+        <span class="s0">for </span><span class="s1">i </span><span class="s0">in </span><span class="s1">range(</span><span class="s3">3</span><span class="s1">)]</span>
+<span class="s1">print(data)</span>
+<span class="s1">print(pd.DataFrame(data))</span>
+<span class="s1">print(pd.DataFrame([{</span><span class="s4">'a'</span><span class="s1">: </span><span class="s3">1</span><span class="s0">, </span><span class="s4">'b'</span><span class="s1">: </span><span class="s3">2</span><span class="s1">}</span><span class="s0">, </span><span class="s1">{</span><span class="s4">'b'</span><span class="s1">: </span><span class="s3">3</span><span class="s0">, </span><span class="s4">'c'</span><span class="s1">: </span><span class="s3">4</span><span class="s1">}]))</span>
+<span class="s1">print(pd.DataFrame({</span><span class="s4">'population'</span><span class="s1">: population</span><span class="s0">, </span><span class="s4">'area'</span><span class="s1">: area}))</span>
+<span class="s1">print(pd.DataFrame(np.random.rand(</span><span class="s3">3</span><span class="s0">, </span><span class="s3">2</span><span class="s1">)</span><span class="s0">, </span><span class="s1">columns = [</span><span class="s4">'foo'</span><span class="s0">, </span><span class="s4">'bar'</span><span class="s1">]</span><span class="s0">,</span>
+                   <span class="s1">index = [</span><span class="s4">'a'</span><span class="s0">, </span><span class="s4">'b'</span><span class="s0">, </span><span class="s4">'c'</span><span class="s1">]))</span>
+<span class="s1">A = np.zeros(</span><span class="s3">3</span><span class="s0">, </span><span class="s1">dtype=[(</span><span class="s4">'A'</span><span class="s0">, </span><span class="s4">'i8'</span><span class="s1">)</span><span class="s0">, </span><span class="s1">(</span><span class="s4">'B'</span><span class="s0">, </span><span class="s4">'f8'</span><span class="s1">)])</span>
+<span class="s1">print(A)</span>
+<span class="s1">print(pd.DataFrame(A))</span>
+<span class="s1">ind = pd.Index([</span><span class="s3">2</span><span class="s0">, </span><span class="s3">3</span><span class="s0">, </span><span class="s3">5</span><span class="s0">, </span><span class="s3">7</span><span class="s0">, </span><span class="s3">11</span><span class="s1">])</span>
+<span class="s1">print(ind)</span>
+<span class="s1">print(ind[</span><span class="s3">1</span><span class="s1">])</span>
+<span class="s1">print(ind[::</span><span class="s3">2</span><span class="s1">])</span>
+<span class="s1">print(ind.size</span><span class="s0">, </span><span class="s1">ind.shape</span><span class="s0">, </span><span class="s1">ind.ndim</span><span class="s0">, </span><span class="s1">ind.dtype)</span>
+<span class="s1">indA = pd.Index([</span><span class="s3">1</span><span class="s0">, </span><span class="s3">3</span><span class="s0">, </span><span class="s3">5</span><span class="s0">, </span><span class="s3">7</span><span class="s0">, </span><span class="s3">9</span><span class="s1">])</span>
+<span class="s1">indB = pd.Index([</span><span class="s3">2</span><span class="s0">, </span><span class="s3">3</span><span class="s0">, </span><span class="s3">5</span><span class="s0">, </span><span class="s3">7</span><span class="s0">, </span><span class="s3">11</span><span class="s1">])</span>
+<span class="s1">print(indA &amp; indB)</span>
+<span class="s1">print(indA | indB)</span>
+<span class="s1">print(indA ^ indB)</span>
+<span class="s1">print(indA.intersection(indB))</span>
+<span class="s1">print(indA[indA &gt; </span><span class="s3">5</span><span class="s1">])</span>
+<span class="s1">print(indA &gt; </span><span class="s3">5</span><span class="s1">)</span>
+
+<span class="s2"># Data Indexing and Selection</span>
+<span class="s1">data = pd.Series([</span><span class="s3">0.25</span><span class="s0">, </span><span class="s3">0.5</span><span class="s0">, </span><span class="s3">0.75</span><span class="s0">, </span><span class="s3">1.0</span><span class="s1">]</span><span class="s0">,</span>
+                 <span class="s1">index=[</span><span class="s4">'a'</span><span class="s0">, </span><span class="s4">'b'</span><span class="s0">, </span><span class="s4">'c'</span><span class="s0">, </span><span class="s4">'d'</span><span class="s1">])</span>
+<span class="s1">print(data)</span>
+<span class="s1">print(data[</span><span class="s4">'a'</span><span class="s1">])</span>
+<span class="s1">print(data[</span><span class="s4">'b'</span><span class="s1">]+data[</span><span class="s4">'a'</span><span class="s1">])</span>
+<span class="s1">print(</span><span class="s4">'a' </span><span class="s0">in </span><span class="s1">data)</span>
+<span class="s1">print(data.keys())</span>
+<span class="s1">print(data.values)</span>
+<span class="s1">print(list(data.items()))</span>
+<span class="s1">data[</span><span class="s4">'e'</span><span class="s1">] = </span><span class="s3">1.25</span>
+<span class="s1">print(data)</span>
+<span class="s1">print(data[</span><span class="s4">'a'</span><span class="s1">:</span><span class="s4">'c'</span><span class="s1">])</span>
+<span class="s1">print(data[</span><span class="s3">0</span><span class="s1">:</span><span class="s3">2</span><span class="s1">])</span>
+<span class="s1">data2 = pd.Series([</span><span class="s4">'a'</span><span class="s0">, </span><span class="s4">'b'</span><span class="s0">, </span><span class="s4">'c'</span><span class="s0">, </span><span class="s4">'d'</span><span class="s1">]</span><span class="s0">,</span>
+                  <span class="s1">index = [</span><span class="s3">2</span><span class="s0">, </span><span class="s3">1</span><span class="s0">, </span><span class="s3">3</span><span class="s0">, </span><span class="s3">0</span><span class="s1">])</span>
+<span class="s1">print(data2)</span>
+<span class="s1">print(data2[</span><span class="s3">0</span><span class="s1">:</span><span class="s3">2</span><span class="s1">])</span>
+<span class="s1">print(data2[</span><span class="s3">1</span><span class="s1">:</span><span class="s3">3</span><span class="s1">])</span>
+<span class="s1">print(data2.index &gt; </span><span class="s3">1</span><span class="s1">)</span>
+<span class="s1">print(data2[data2.index &gt; </span><span class="s3">1</span><span class="s1">])</span>
+<span class="s1">print(data[(data &gt; </span><span class="s3">0.3</span><span class="s1">) &amp; (data &lt; </span><span class="s3">0.8</span><span class="s1">)])</span>
+<span class="s1">print(data[[</span><span class="s4">'a'</span><span class="s0">, </span><span class="s4">'e'</span><span class="s1">]])</span>
+<span class="s1">data = pd.Series([</span><span class="s4">'a'</span><span class="s0">, </span><span class="s4">'b'</span><span class="s0">, </span><span class="s4">'c'</span><span class="s1">]</span><span class="s0">, </span><span class="s1">index = [</span><span class="s3">1</span><span class="s0">, </span><span class="s3">3</span><span class="s0">, </span><span class="s3">5</span><span class="s1">])</span>
+<span class="s1">print(data)</span>
+<span class="s1">print(data[</span><span class="s3">1</span><span class="s1">])</span>
+<span class="s1">print(data[</span><span class="s3">1</span><span class="s1">:</span><span class="s3">3</span><span class="s1">])</span>
+<span class="s1">print(data.loc[</span><span class="s3">1</span><span class="s1">])</span>
+<span class="s1">print(data.loc[</span><span class="s3">1</span><span class="s1">:</span><span class="s3">3</span><span class="s1">])</span>
+<span class="s1">print(data.iloc[</span><span class="s3">1</span><span class="s1">])</span>
+<span class="s1">print(data.iloc[</span><span class="s3">1</span><span class="s1">:</span><span class="s3">3</span><span class="s1">])</span>
+
+<span class="s2"># Data Selection in DataFrame</span>
+<span class="s1">area = pd.Series({</span><span class="s4">'California'</span><span class="s1">: </span><span class="s3">423967</span><span class="s0">, </span><span class="s4">'Texas'</span><span class="s1">: </span><span class="s3">695662</span><span class="s0">,</span>
+                  <span class="s4">'New York'</span><span class="s1">: </span><span class="s3">141297</span><span class="s0">, </span><span class="s4">'Florida'</span><span class="s1">: </span><span class="s3">170312</span><span class="s0">,</span>
+                  <span class="s4">'Illinois'</span><span class="s1">: </span><span class="s3">149995</span><span class="s1">})</span>
+<span class="s1">pop = pd.Series({</span><span class="s4">'California'</span><span class="s1">: </span><span class="s3">38332521</span><span class="s0">, </span><span class="s4">'Texas'</span><span class="s1">: </span><span class="s3">26448193</span><span class="s0">,</span>
+                 <span class="s4">'New York'</span><span class="s1">: </span><span class="s3">19651127</span><span class="s0">, </span><span class="s4">'Florida'</span><span class="s1">: </span><span class="s3">19552860</span><span class="s0">,</span>
+                 <span class="s4">'Illinois'</span><span class="s1">: </span><span class="s3">12882135</span><span class="s1">})</span>
+<span class="s1">data = pd.DataFrame({</span><span class="s4">'area'</span><span class="s1">: area</span><span class="s0">, </span><span class="s4">'pop'</span><span class="s1">: pop})</span>
+<span class="s1">print(data)</span>
+<span class="s1">print(data[</span><span class="s4">'area'</span><span class="s1">])</span>
+<span class="s1">print(data.area)</span>
+<span class="s1">print(data.area </span><span class="s0">is </span><span class="s1">data[</span><span class="s4">'area'</span><span class="s1">])</span>
+<span class="s1">print(data.pop </span><span class="s0">is </span><span class="s1">data[</span><span class="s4">'pop'</span><span class="s1">])</span>
+<span class="s1">data[</span><span class="s4">'density'</span><span class="s1">] = data[</span><span class="s4">'pop'</span><span class="s1">] / data[</span><span class="s4">'area'</span><span class="s1">]</span>
+<span class="s1">print(data)</span>
+<span class="s1">print(data.values)</span>
+<span class="s1">print(data.T)</span>
+<span class="s1">print(data.values[</span><span class="s3">0</span><span class="s1">])</span>
+<span class="s1">print(data[</span><span class="s4">'area'</span><span class="s1">])</span>
+<span class="s1">print(data.iloc[:</span><span class="s3">3</span><span class="s0">, </span><span class="s1">:</span><span class="s3">2</span><span class="s1">])</span>
+<span class="s1">print(data.loc[:</span><span class="s4">'Illinois'</span><span class="s0">, </span><span class="s1">:</span><span class="s4">'pop'</span><span class="s1">])</span>
+<span class="s1">print(data.loc[data.density &gt; </span><span class="s3">100</span><span class="s0">, </span><span class="s1">[</span><span class="s4">'pop'</span><span class="s0">, </span><span class="s4">'density'</span><span class="s1">]])</span>
+<span class="s1">print(data.density &gt; </span><span class="s3">100</span><span class="s1">)</span>
+<span class="s1">data.iloc[</span><span class="s3">0</span><span class="s0">, </span><span class="s3">2</span><span class="s1">] = </span><span class="s3">90</span>
+<span class="s1">print(data)</span>
+<span class="s1">print(data[</span><span class="s4">'Florida'</span><span class="s1">:</span><span class="s4">'Illinois'</span><span class="s1">])</span>
+<span class="s1">print(data[</span><span class="s3">1</span><span class="s1">:</span><span class="s3">3</span><span class="s1">])</span>
+<span class="s1">print(data[data.density &gt; </span><span class="s3">100</span><span class="s1">])</span>
+
+<span class="s2"># Operating on Data in Pandas</span>
+<span class="s1">rng = np.random.RandomState(</span><span class="s3">42</span><span class="s1">)</span>
+<span class="s1">ser = pd.Series(rng.randint(</span><span class="s3">0</span><span class="s0">, </span><span class="s3">10</span><span class="s0">, </span><span class="s3">4</span><span class="s1">))</span>
+<span class="s1">print(ser)</span>
+<span class="s1">df = pd.DataFrame(rng.randint(</span><span class="s3">0</span><span class="s0">, </span><span class="s3">10</span><span class="s0">, </span><span class="s1">(</span><span class="s3">3</span><span class="s0">, </span><span class="s3">4</span><span class="s1">))</span><span class="s0">,</span>
+                  <span class="s1">columns = [</span><span class="s4">'A'</span><span class="s0">, </span><span class="s4">'B'</span><span class="s0">, </span><span class="s4">'C'</span><span class="s0">, </span><span class="s4">'D'</span><span class="s1">])</span>
+<span class="s1">print(df)</span>
+<span class="s1">print(np.exp(ser))</span>
+<span class="s1">print(np.sin(df * np.pi / </span><span class="s3">4</span><span class="s1">))</span>
+<span class="s1">area = pd.Series({</span><span class="s4">'Alaska'</span><span class="s1">: </span><span class="s3">1723337</span><span class="s0">, </span><span class="s4">'Texas'</span><span class="s1">: </span><span class="s3">695662</span><span class="s0">,</span>
+                  <span class="s4">'California'</span><span class="s1">: </span><span class="s3">423967</span><span class="s1">}</span><span class="s0">, </span><span class="s1">name=</span><span class="s4">'area'</span><span class="s1">)</span>
+<span class="s1">population = pd.Series({</span><span class="s4">'California'</span><span class="s1">: </span><span class="s3">38332521</span><span class="s0">, </span><span class="s4">'Texas'</span><span class="s1">: </span><span class="s3">26448193</span><span class="s0">,</span>
+                        <span class="s4">'New York'</span><span class="s1">: </span><span class="s3">19651127</span><span class="s1">}</span><span class="s0">, </span><span class="s1">name=</span><span class="s4">'population'</span><span class="s1">)</span>
+<span class="s1">print(population / area)</span>
+<span class="s1">print(area.index | population.index)</span>
+<span class="s1">print(area.keys() | population.keys())</span>
+<span class="s1">A = pd.Series([</span><span class="s3">2</span><span class="s0">, </span><span class="s3">4</span><span class="s0">, </span><span class="s3">6</span><span class="s1">]</span><span class="s0">, </span><span class="s1">index=[</span><span class="s3">0</span><span class="s0">, </span><span class="s3">1</span><span class="s0">, </span><span class="s3">2</span><span class="s1">])</span>
+<span class="s1">B = pd.Series([</span><span class="s3">1</span><span class="s0">, </span><span class="s3">3</span><span class="s0">, </span><span class="s3">5</span><span class="s1">]</span><span class="s0">, </span><span class="s1">index=[</span><span class="s3">1</span><span class="s0">, </span><span class="s3">2</span><span class="s0">, </span><span class="s3">3</span><span class="s1">])</span>
+<span class="s1">print(A+B)</span>
+<span class="s1">print(A.add(B</span><span class="s0">, </span><span class="s1">fill_value=</span><span class="s3">0</span><span class="s1">))</span>
+<span class="s1">A = pd.DataFrame(rng.randint(</span><span class="s3">0</span><span class="s0">, </span><span class="s3">20</span><span class="s0">, </span><span class="s1">(</span><span class="s3">2</span><span class="s0">, </span><span class="s3">2</span><span class="s1">))</span><span class="s0">,</span>
+                 <span class="s1">columns = list(</span><span class="s4">'AB'</span><span class="s1">))</span>
+<span class="s1">print(A)</span>
+<span class="s1">B = pd.DataFrame(rng.randint(</span><span class="s3">0</span><span class="s0">, </span><span class="s3">10</span><span class="s0">, </span><span class="s1">(</span><span class="s3">3</span><span class="s0">, </span><span class="s3">3</span><span class="s1">))</span><span class="s0">,</span>
+                 <span class="s1">columns = list(</span><span class="s4">'BAC'</span><span class="s1">))</span>
+<span class="s1">print(B)</span>
+<span class="s1">print(A+B)</span>
+<span class="s1">fill = A.stack().mean()</span>
+<span class="s1">print(fill)</span>
+<span class="s1">print(A.add(B</span><span class="s0">, </span><span class="s1">fill_value=fill))</span>
+<span class="s1">A = rng.randint(</span><span class="s3">10</span><span class="s0">, </span><span class="s1">size=(</span><span class="s3">3</span><span class="s0">, </span><span class="s3">4</span><span class="s1">))</span>
+<span class="s1">print(A)</span>
+<span class="s1">print(A - A[</span><span class="s3">0</span><span class="s1">])</span>
+<span class="s1">df = pd.DataFrame(A</span><span class="s0">, </span><span class="s1">columns = list(</span><span class="s4">&quot;QRST&quot;</span><span class="s1">))</span>
+<span class="s1">print(df)</span>
+<span class="s1">print(df - df.iloc[</span><span class="s3">0</span><span class="s1">])</span>
+<span class="s1">print(df.subtract(df[</span><span class="s4">'R'</span><span class="s1">]</span><span class="s0">, </span><span class="s1">axis=</span><span class="s3">0</span><span class="s1">))</span>
+<span class="s1">halfrow = df.iloc[</span><span class="s3">0</span><span class="s0">, </span><span class="s1">::</span><span class="s3">2</span><span class="s1">]</span>
+<span class="s1">print(halfrow)</span>
+<span class="s1">print(df - halfrow)</span>
+
+<span class="s2"># Handling Missing Data</span>
+<span class="s1">vals1 = np.array([</span><span class="s3">1</span><span class="s0">, None,</span><span class="s3">3 </span><span class="s0">, </span><span class="s3">4</span><span class="s1">])</span>
+<span class="s1">print(vals1)</span>
+<span class="s1">vals2 = np.array([</span><span class="s3">1</span><span class="s0">, </span><span class="s1">np.nan</span><span class="s0">, </span><span class="s3">3</span><span class="s0">, </span><span class="s3">4</span><span class="s1">])</span>
+<span class="s1">print(vals2.dtype)</span>
+<span class="s1">print(</span><span class="s3">1 </span><span class="s1">+ np.nan)</span>
+<span class="s1">print(vals2.sum()</span><span class="s0">, </span><span class="s1">vals2.min()</span><span class="s0">, </span><span class="s1">vals2.max())</span>
+<span class="s1">print(np.nansum(vals2)</span><span class="s0">, </span><span class="s1">np.nanmin(vals2)</span><span class="s0">, </span><span class="s1">np.nanmax(vals2))</span>
+<span class="s1">print(pd.Series([</span><span class="s3">1</span><span class="s0">, </span><span class="s1">np.nan</span><span class="s0">, </span><span class="s3">2</span><span class="s0">, None</span><span class="s1">]))</span>
+<span class="s1">x = pd.Series(range(</span><span class="s3">2</span><span class="s1">)</span><span class="s0">, </span><span class="s1">dtype=int)</span>
+<span class="s1">print(x)</span>
+<span class="s1">x[</span><span class="s3">0</span><span class="s1">] = </span><span class="s0">None</span>
+<span class="s1">print(x)</span>
+<span class="s1">data = pd.Series([</span><span class="s3">1</span><span class="s0">, </span><span class="s1">np.nan</span><span class="s0">, </span><span class="s4">'hello'</span><span class="s0">, None</span><span class="s1">])</span>
+<span class="s1">print(data.isnull())</span>
+<span class="s1">print(data[data.notnull()])</span>
+<span class="s1">print(data.dropna())</span>
+<span class="s1">df = pd.DataFrame([[</span><span class="s3">1</span><span class="s0">, </span><span class="s1">np.nan</span><span class="s0">, </span><span class="s3">2</span><span class="s1">]</span><span class="s0">,</span>
+                   <span class="s1">[</span><span class="s3">2</span><span class="s0">, </span><span class="s3">3</span><span class="s0">, </span><span class="s3">5</span><span class="s1">]</span><span class="s0">,</span>
+                   <span class="s1">[np.nan</span><span class="s0">, </span><span class="s3">4</span><span class="s0">, </span><span class="s3">6</span><span class="s1">]])</span>
+<span class="s1">print(df)</span>
+<span class="s1">print(df.dropna(axis=</span><span class="s4">'columns'</span><span class="s1">))</span>
+<span class="s1">print(df.dropna(axis=</span><span class="s3">1</span><span class="s1">))</span>
+<span class="s1">df[</span><span class="s3">3</span><span class="s1">] = np.nan</span>
+<span class="s1">print(df)</span>
+<span class="s1">print(df.dropna(axis=</span><span class="s4">'columns'</span><span class="s0">, </span><span class="s1">how=</span><span class="s4">'all'</span><span class="s1">))</span>
+<span class="s1">print(df.dropna(axis=</span><span class="s4">'rows'</span><span class="s0">, </span><span class="s1">how=</span><span class="s4">'any'</span><span class="s1">))</span>
+<span class="s1">print(df.dropna(axis=</span><span class="s4">'rows'</span><span class="s0">, </span><span class="s1">thresh=</span><span class="s3">3</span><span class="s1">))</span>
+<span class="s1">data = pd.Series([</span><span class="s3">1</span><span class="s0">, </span><span class="s1">np.nan</span><span class="s0">, </span><span class="s3">2</span><span class="s0">, None, </span><span class="s3">3</span><span class="s1">]</span><span class="s0">, </span><span class="s1">index=list(</span><span class="s4">'abcde'</span><span class="s1">))</span>
+<span class="s1">print(data)</span>
+<span class="s1">print(data.fillna(</span><span class="s3">0</span><span class="s1">))</span>
+<span class="s1">print(data.fillna(method=</span><span class="s4">'ffill'</span><span class="s1">))</span>
+<span class="s1">print(data.fillna(method=</span><span class="s4">'bfill'</span><span class="s1">))</span>
+<span class="s1">print(df)</span>
+<span class="s1">print(df.fillna(method=</span><span class="s4">'ffill'</span><span class="s0">, </span><span class="s1">axis=</span><span class="s3">1</span><span class="s1">))</span>
+<span class="s1">print(df.fillna(method=</span><span class="s4">'ffill'</span><span class="s0">, </span><span class="s1">axis=</span><span class="s3">0</span><span class="s1">))</span>
+
+<span class="s2"># Hierarchical Indexing</span>
+<span class="s1">index = [(</span><span class="s4">'California'</span><span class="s0">, </span><span class="s3">2000</span><span class="s1">)</span><span class="s0">, </span><span class="s1">(</span><span class="s4">'California'</span><span class="s0">, </span><span class="s3">2010</span><span class="s1">)</span><span class="s0">,</span>
+         <span class="s1">(</span><span class="s4">'New York'</span><span class="s0">, </span><span class="s3">2000</span><span class="s1">)</span><span class="s0">, </span><span class="s1">(</span><span class="s4">'New York'</span><span class="s0">, </span><span class="s3">2010</span><span class="s1">)</span><span class="s0">,</span>
+         <span class="s1">(</span><span class="s4">'Texas'</span><span class="s0">, </span><span class="s3">2000</span><span class="s1">)</span><span class="s0">, </span><span class="s1">(</span><span class="s4">'Texas'</span><span class="s0">, </span><span class="s3">2010</span><span class="s1">)]</span>
+<span class="s1">populations = [</span><span class="s3">33871648</span><span class="s0">, </span><span class="s3">37253956</span><span class="s0">,</span>
+               <span class="s3">18976457</span><span class="s0">, </span><span class="s3">19378102</span><span class="s0">,</span>
+               <span class="s3">20851820</span><span class="s0">, </span><span class="s3">25145561</span><span class="s1">]</span>
+<span class="s1">pop = pd.Series(populations</span><span class="s0">, </span><span class="s1">index=index)</span>
+<span class="s1">print(pop)</span>
+<span class="s1">print(pop[(</span><span class="s4">'California'</span><span class="s0">, </span><span class="s3">2010</span><span class="s1">):(</span><span class="s4">'Texas'</span><span class="s0">, </span><span class="s3">2000</span><span class="s1">)])</span>
+<span class="s1">print(pop[[i </span><span class="s0">for </span><span class="s1">i </span><span class="s0">in </span><span class="s1">pop.index </span><span class="s0">if </span><span class="s1">i[</span><span class="s3">1</span><span class="s1">] == </span><span class="s3">2010</span><span class="s1">]])</span>
+<span class="s1">index = pd.MultiIndex.from_tuples(index)</span>
+<span class="s1">print(index)</span>
+<span class="s1">pop = pop.reindex(index)</span>
+<span class="s1">print(pop)</span>
+<span class="s1">print(pop[:</span><span class="s0">, </span><span class="s3">2010</span><span class="s1">])</span>
+<span class="s1">pop_df = pop.unstack()</span>
+<span class="s1">print(pop_df)</span>
+<span class="s1">print(pop_df.stack())</span>
+<span class="s1">pop_df = pd.DataFrame({</span><span class="s4">'total'</span><span class="s1">:pop</span><span class="s0">,</span>
+                       <span class="s4">'under18'</span><span class="s1">:[</span><span class="s3">9267089</span><span class="s0">, </span><span class="s3">9284094</span><span class="s0">,</span>
+                                  <span class="s3">4687374</span><span class="s0">, </span><span class="s3">4318033</span><span class="s0">,</span>
+                                  <span class="s3">5906301</span><span class="s0">, </span><span class="s3">6879014</span><span class="s1">]})</span>
+<span class="s1">print(pop_df)</span>
+<span class="s1">f_u18 = pop_df[</span><span class="s4">'under18'</span><span class="s1">] / pop_df[</span><span class="s4">'total'</span><span class="s1">]</span>
+<span class="s1">print(f_u18.unstack())</span>
+<span class="s1">df = pd.DataFrame(np.random.rand(</span><span class="s3">4</span><span class="s0">, </span><span class="s3">2</span><span class="s1">)</span><span class="s0">,</span>
+                  <span class="s1">index = [[</span><span class="s4">'a'</span><span class="s0">, </span><span class="s4">'a'</span><span class="s0">, </span><span class="s4">'b'</span><span class="s0">, </span><span class="s4">'b'</span><span class="s1">]</span><span class="s0">,</span>
+                           <span class="s1">[</span><span class="s3">1</span><span class="s0">, </span><span class="s3">2</span><span class="s0">, </span><span class="s3">1</span><span class="s0">, </span><span class="s3">2</span><span class="s1">]]</span><span class="s0">,</span>
+                  <span class="s1">columns = [</span><span class="s4">'data1'</span><span class="s0">, </span><span class="s4">'data2'</span><span class="s1">])</span>
+<span class="s1">print(df)</span>
+<span class="s1">print(df.unstack())</span>
+<span class="s1">data = {(</span><span class="s4">'California'</span><span class="s0">, </span><span class="s3">2000</span><span class="s1">): </span><span class="s3">33871648</span><span class="s0">,</span>
+        <span class="s1">(</span><span class="s4">'California'</span><span class="s0">, </span><span class="s3">2010</span><span class="s1">): </span><span class="s3">37253956</span><span class="s0">,</span>
+        <span class="s1">(</span><span class="s4">'Texas'</span><span class="s0">, </span><span class="s3">2000</span><span class="s1">): </span><span class="s3">20851820</span><span class="s0">,</span>
+        <span class="s1">(</span><span class="s4">'Texas'</span><span class="s0">, </span><span class="s3">2010</span><span class="s1">): </span><span class="s3">25145561</span><span class="s0">,</span>
+        <span class="s1">(</span><span class="s4">'New York'</span><span class="s0">, </span><span class="s3">2000</span><span class="s1">): </span><span class="s3">18976457</span><span class="s0">,</span>
+        <span class="s1">(</span><span class="s4">'New York'</span><span class="s0">, </span><span class="s3">2010</span><span class="s1">): </span><span class="s3">19378102</span><span class="s1">}</span>
+<span class="s1">print(pd.Series(data))</span>
+<span class="s1">print(pd.MultiIndex.from_arrays([[</span><span class="s4">'a'</span><span class="s0">, </span><span class="s4">'a'</span><span class="s0">, </span><span class="s4">'b'</span><span class="s0">, </span><span class="s4">'b'</span><span class="s1">]</span><span class="s0">, </span><span class="s1">[</span><span class="s3">1</span><span class="s0">, </span><span class="s3">2</span><span class="s0">, </span><span class="s3">1</span><span class="s0">, </span><span class="s3">2</span><span class="s1">]]))</span>
+<span class="s1">print(pd.MultiIndex.from_tuples([(</span><span class="s4">'a'</span><span class="s0">, </span><span class="s3">1</span><span class="s1">)</span><span class="s0">, </span><span class="s1">(</span><span class="s4">'a'</span><span class="s0">, </span><span class="s3">2</span><span class="s1">)</span><span class="s0">, </span><span class="s1">(</span><span class="s4">'b'</span><span class="s0">, </span><span class="s3">1</span><span class="s1">)</span><span class="s0">, </span><span class="s1">(</span><span class="s4">'b'</span><span class="s0">, </span><span class="s3">2</span><span class="s1">)]))</span>
+<span class="s1">print(pd.MultiIndex.from_product([[</span><span class="s4">'a'</span><span class="s0">, </span><span class="s4">'b'</span><span class="s1">]</span><span class="s0">, </span><span class="s1">[</span><span class="s3">1</span><span class="s0">, </span><span class="s3">2</span><span class="s1">]]))</span>
+<span class="s1">print(pop.index)</span>
+<span class="s1">print(pop)</span>
+<span class="s1">pop.index.names = [</span><span class="s4">'state'</span><span class="s0">, </span><span class="s4">'year'</span><span class="s1">]</span>
+<span class="s1">print(pop)</span>
+<span class="s1">index = pd.MultiIndex.from_product([[</span><span class="s3">2013</span><span class="s0">, </span><span class="s3">2014</span><span class="s1">]</span><span class="s0">, </span><span class="s1">[</span><span class="s3">1</span><span class="s0">, </span><span class="s3">2</span><span class="s1">]]</span><span class="s0">,</span>
+                                   <span class="s1">names = [</span><span class="s4">'year'</span><span class="s0">, </span><span class="s4">'visit'</span><span class="s1">])</span>
+<span class="s1">columns = pd.MultiIndex.from_product([[</span><span class="s4">'Bob'</span><span class="s0">, </span><span class="s4">'Guido'</span><span class="s0">, </span><span class="s4">'Sue'</span><span class="s1">]</span><span class="s0">, </span><span class="s1">[</span><span class="s4">'HR'</span><span class="s0">, </span><span class="s4">'Temp'</span><span class="s1">]]</span><span class="s0">,</span>
+                                     <span class="s1">names=[</span><span class="s4">'subject'</span><span class="s0">, </span><span class="s4">'type'</span><span class="s1">])</span>
+<span class="s1">data = np.round(np.random.rand(</span><span class="s3">4</span><span class="s0">, </span><span class="s3">6</span><span class="s1">)</span><span class="s0">, </span><span class="s3">1</span><span class="s1">)</span>
+<span class="s1">print(data)</span>
+<span class="s1">print(data[:</span><span class="s0">, </span><span class="s1">::</span><span class="s3">2</span><span class="s1">])</span>
+<span class="s1">data[:</span><span class="s0">, </span><span class="s1">::</span><span class="s3">2</span><span class="s1">] *= </span><span class="s3">10</span>
+<span class="s1">data += </span><span class="s3">37</span>
+<span class="s1">print(data)</span>
+<span class="s1">health_data = pd.DataFrame(data</span><span class="s0">, </span><span class="s1">index=index</span><span class="s0">, </span><span class="s1">columns=columns)</span>
+<span class="s1">print(health_data)</span>
+<span class="s1">print(health_data[</span><span class="s4">'Guido'</span><span class="s1">])</span>
+<span class="s1">print(health_data.iloc[</span><span class="s3">1</span><span class="s1">])</span>
+<span class="s1">print(pop)</span>
+<span class="s1">print(pop[</span><span class="s4">'California'</span><span class="s0">, </span><span class="s3">2000</span><span class="s1">])</span>
+<span class="s1">print(pop[</span><span class="s4">'California'</span><span class="s1">])</span>
+<span class="s1">print(pop.loc[</span><span class="s4">'California'</span><span class="s1">:</span><span class="s4">'New York'</span><span class="s1">])</span>
+<span class="s1">print(pop[:</span><span class="s0">, </span><span class="s3">2000</span><span class="s1">])</span>
+<span class="s1">print(pop[pop &gt; </span><span class="s3">22000000</span><span class="s1">])</span>
+<span class="s1">print(pop[[</span><span class="s4">'California'</span><span class="s0">, </span><span class="s4">'Texas'</span><span class="s1">]])</span>
+<span class="s1">print(health_data[</span><span class="s4">'Guido'</span><span class="s0">, </span><span class="s4">'HR'</span><span class="s1">])</span>
+<span class="s1">print(health_data.iloc[:</span><span class="s3">2</span><span class="s0">, </span><span class="s1">:</span><span class="s3">2</span><span class="s1">])</span>
+<span class="s1">print(health_data.loc[:</span><span class="s0">, </span><span class="s1">(</span><span class="s4">'Bob'</span><span class="s0">, </span><span class="s4">'HR'</span><span class="s1">)])</span>
+<span class="s1">idx = pd.IndexSlice</span>
+<span class="s1">print(health_data.loc[idx[:</span><span class="s0">, </span><span class="s3">2</span><span class="s1">]</span><span class="s0">, </span><span class="s1">idx[:</span><span class="s0">, </span><span class="s4">'HR'</span><span class="s1">]])</span>
+<span class="s1">index = pd.MultiIndex.from_product([[</span><span class="s4">'a'</span><span class="s0">, </span><span class="s4">'c'</span><span class="s0">, </span><span class="s4">'b'</span><span class="s1">]</span><span class="s0">, </span><span class="s1">[</span><span class="s3">1</span><span class="s0">, </span><span class="s3">2</span><span class="s1">]])</span>
+<span class="s1">data = pd.Series(np.random.rand(</span><span class="s3">6</span><span class="s1">)</span><span class="s0">, </span><span class="s1">index=index)</span>
+<span class="s1">data.index.names = [</span><span class="s4">'char'</span><span class="s0">, </span><span class="s4">'int'</span><span class="s1">]</span>
+<span class="s1">print(data)</span>
+<span class="s1">data = data.sort_index()</span>
+<span class="s1">print(data)</span>
+<span class="s1">print(data[</span><span class="s4">'a'</span><span class="s1">:</span><span class="s4">'b'</span><span class="s1">])</span>
+<span class="s1">print(pop.unstack(level=</span><span class="s3">0</span><span class="s1">))</span>
+<span class="s1">print(pop.unstack(level=</span><span class="s3">1</span><span class="s1">))</span>
+<span class="s1">print(pop.unstack().stack())</span>
+<span class="s1">pop_flat = pop.reset_index(name=</span><span class="s4">'population'</span><span class="s1">)</span>
+<span class="s1">print(pop_flat)</span>
+<span class="s1">print(pop_flat.set_index([</span><span class="s4">'state'</span><span class="s0">, </span><span class="s4">'year'</span><span class="s1">]))</span>
+<span class="s1">data_mean = health_data.mean(level=</span><span class="s4">'year'</span><span class="s1">)</span>
+<span class="s1">print(data_mean)</span>
+<span class="s1">print(data_mean.mean(axis=</span><span class="s3">1</span><span class="s0">, </span><span class="s1">level=</span><span class="s4">'type'</span><span class="s1">))</span>
+
+<span class="s2"># Combining Datasets: Concat and Append</span>
+<span class="s0">def </span><span class="s1">make_df(cols</span><span class="s0">, </span><span class="s1">ind):</span>
+    <span class="s5">&quot;&quot;&quot;Quickly make a DataFrame&quot;&quot;&quot;</span>
+    <span class="s1">data = {c: [str(c) + str(i) </span><span class="s0">for </span><span class="s1">i </span><span class="s0">in </span><span class="s1">ind]</span>
+            <span class="s0">for </span><span class="s1">c </span><span class="s0">in </span><span class="s1">cols}</span>
+    <span class="s0">return </span><span class="s1">pd.DataFrame(data</span><span class="s0">, </span><span class="s1">ind)</span>
+<span class="s1">print(make_df(</span><span class="s4">'ABC'</span><span class="s0">, </span><span class="s1">range(</span><span class="s3">3</span><span class="s1">)))</span>
+<span class="s1">x = [</span><span class="s3">1</span><span class="s0">, </span><span class="s3">2</span><span class="s0">, </span><span class="s3">3</span><span class="s1">]</span>
+<span class="s1">y = [</span><span class="s3">4</span><span class="s0">, </span><span class="s3">5</span><span class="s0">, </span><span class="s3">6</span><span class="s1">]</span>
+<span class="s1">z = [</span><span class="s3">7</span><span class="s0">, </span><span class="s3">8</span><span class="s0">, </span><span class="s3">9</span><span class="s1">]</span>
+<span class="s1">print(np.concatenate([x</span><span class="s0">, </span><span class="s1">y</span><span class="s0">, </span><span class="s1">z]))</span>
+<span class="s1">x = [[</span><span class="s3">1</span><span class="s0">, </span><span class="s3">2</span><span class="s1">]</span><span class="s0">,</span>
+     <span class="s1">[</span><span class="s3">3</span><span class="s0">, </span><span class="s3">4</span><span class="s1">]]</span>
+<span class="s1">print(np.concatenate([x</span><span class="s0">, </span><span class="s1">x]</span><span class="s0">, </span><span class="s1">axis=</span><span class="s3">0</span><span class="s1">))</span>
+<span class="s1">print(np.concatenate([x</span><span class="s0">, </span><span class="s1">x]</span><span class="s0">, </span><span class="s1">axis=</span><span class="s3">1</span><span class="s1">))</span>
+<span class="s1">ser1 = pd.Series([</span><span class="s4">'A'</span><span class="s0">, </span><span class="s4">'B'</span><span class="s0">, </span><span class="s4">'C'</span><span class="s1">]</span><span class="s0">, </span><span class="s1">index = [</span><span class="s3">1</span><span class="s0">, </span><span class="s3">2</span><span class="s0">, </span><span class="s3">3</span><span class="s1">])</span>
+<span class="s1">ser2 = pd.Series([</span><span class="s4">'D'</span><span class="s0">, </span><span class="s4">'E'</span><span class="s0">, </span><span class="s4">'F'</span><span class="s1">]</span><span class="s0">, </span><span class="s1">index = [</span><span class="s3">4</span><span class="s0">, </span><span class="s3">5</span><span class="s0">, </span><span class="s3">6</span><span class="s1">])</span>
+<span class="s1">print(pd.concat([ser1</span><span class="s0">, </span><span class="s1">ser2]))</span>
+<span class="s1">df1 = make_df(</span><span class="s4">'AB'</span><span class="s0">, </span><span class="s1">[</span><span class="s3">1</span><span class="s0">, </span><span class="s3">2</span><span class="s1">])</span>
+<span class="s1">df2 = make_df(</span><span class="s4">'AB'</span><span class="s0">, </span><span class="s1">[</span><span class="s3">3</span><span class="s0">, </span><span class="s3">4</span><span class="s1">])</span>
+<span class="s1">print(df1); print(df2); print(pd.concat([df1</span><span class="s0">, </span><span class="s1">df2]))</span>
+<span class="s1">df3 = make_df(</span><span class="s4">'AB'</span><span class="s0">, </span><span class="s1">[</span><span class="s3">0</span><span class="s0">, </span><span class="s3">1</span><span class="s1">])</span>
+<span class="s1">df4 = make_df(</span><span class="s4">'CD'</span><span class="s0">, </span><span class="s1">[</span><span class="s3">0</span><span class="s0">, </span><span class="s3">1</span><span class="s1">])</span>
+<span class="s1">print(df3); print(df4); print(pd.concat([df3</span><span class="s0">, </span><span class="s1">df4]</span><span class="s0">, </span><span class="s1">axis=</span><span class="s3">1</span><span class="s1">))</span>
+<span class="s1">x = make_df(</span><span class="s4">'AB'</span><span class="s0">, </span><span class="s1">[</span><span class="s3">0</span><span class="s0">, </span><span class="s3">1</span><span class="s1">])</span>
+<span class="s1">y = make_df(</span><span class="s4">'AB'</span><span class="s0">, </span><span class="s1">[</span><span class="s3">2</span><span class="s0">, </span><span class="s3">3</span><span class="s1">])</span>
+<span class="s1">print(y.index)</span>
+<span class="s1">y.index = x.index</span>
+<span class="s1">print(x); print(y); print(pd.concat([x</span><span class="s0">, </span><span class="s1">y]))</span>
+<span class="s0">try</span><span class="s1">:</span>
+    <span class="s1">pd.concat([x</span><span class="s0">, </span><span class="s1">y]</span><span class="s0">, </span><span class="s1">verify_integrity=</span><span class="s0">True</span><span class="s1">)</span>
+<span class="s0">except </span><span class="s1">ValueError </span><span class="s0">as </span><span class="s1">e:</span>
+    <span class="s1">print(</span><span class="s4">&quot;ValueError:&quot;</span><span class="s0">, </span><span class="s1">e)</span>
+<span class="s1">print(x); print(y); print(pd.concat([x</span><span class="s0">, </span><span class="s1">y]</span><span class="s0">, </span><span class="s1">ignore_index=</span><span class="s0">True</span><span class="s1">))</span>
+<span class="s1">print(x); print(y); print(pd.concat([x</span><span class="s0">, </span><span class="s1">y]</span><span class="s0">, </span><span class="s1">keys=[</span><span class="s4">'x'</span><span class="s0">, </span><span class="s4">'y'</span><span class="s1">]))</span>
+<span class="s1">print(x); print(y); print(pd.concat([y</span><span class="s0">, </span><span class="s1">x]</span><span class="s0">, </span><span class="s1">keys=[</span><span class="s4">'y'</span><span class="s0">, </span><span class="s4">'x'</span><span class="s1">]))</span>
+<span class="s1">df5 = make_df(</span><span class="s4">'ABC'</span><span class="s0">, </span><span class="s1">[</span><span class="s3">1</span><span class="s0">, </span><span class="s3">2</span><span class="s1">])</span>
+<span class="s1">df6 = make_df(</span><span class="s4">'BCD'</span><span class="s0">, </span><span class="s1">[</span><span class="s3">3</span><span class="s0">, </span><span class="s3">4</span><span class="s1">])</span>
+<span class="s1">print(df5); print(df6); print(pd.concat([df5</span><span class="s0">, </span><span class="s1">df6]))</span>
+<span class="s1">print(df5); print(df6); print(pd.concat([df5</span><span class="s0">, </span><span class="s1">df6]</span><span class="s0">, </span><span class="s1">join=</span><span class="s4">'inner'</span><span class="s1">))</span>
+<span class="s2"># print(df5); print(df6); print(pd.concat([df5, df6], join_axes=[df5.columns]))</span>
+<span class="s2"># print(df5.columns)</span>
+<span class="s1">print(df1); print(df2); print(df1.append(df2))</span>
+
+<span class="s2"># Combining Datasets: Merge and Join</span>
+<span class="s1">df1 = pd.DataFrame({</span><span class="s4">'employee'</span><span class="s1">: [</span><span class="s4">'Bob'</span><span class="s0">, </span><span class="s4">'Jake'</span><span class="s0">, </span><span class="s4">'Lisa'</span><span class="s0">, </span><span class="s4">'Sue'</span><span class="s1">]</span><span class="s0">,</span>
+                    <span class="s4">'group'</span><span class="s1">: [</span><span class="s4">'Accounting'</span><span class="s0">, </span><span class="s4">'Engineering'</span><span class="s0">, </span><span class="s4">'Engineering'</span><span class="s0">, </span><span class="s4">'HR'</span><span class="s1">]})</span>
+<span class="s1">df2 = pd.DataFrame({</span><span class="s4">'employee'</span><span class="s1">: [</span><span class="s4">'Lisa'</span><span class="s0">, </span><span class="s4">'Bob'</span><span class="s0">, </span><span class="s4">'Jake'</span><span class="s0">, </span><span class="s4">'Sue'</span><span class="s1">]</span><span class="s0">,</span>
+                    <span class="s4">'hire_date'</span><span class="s1">: [</span><span class="s3">2004</span><span class="s0">, </span><span class="s3">2008</span><span class="s0">, </span><span class="s3">2012</span><span class="s0">, </span><span class="s3">2014</span><span class="s1">]})</span>
+<span class="s1">print(df1); print(df2)</span>
+<span class="s1">df3 = pd.merge(df1</span><span class="s0">, </span><span class="s1">df2)</span>
+<span class="s1">print(df3)</span>
+<span class="s1">df4 = pd.DataFrame({</span><span class="s4">'group'</span><span class="s1">: [</span><span class="s4">'Accounting'</span><span class="s0">, </span><span class="s4">'Engineering'</span><span class="s0">, </span><span class="s4">'HR'</span><span class="s1">]</span><span class="s0">,</span>
+                    <span class="s4">'supervisor'</span><span class="s1">: [</span><span class="s4">'Carly'</span><span class="s0">, </span><span class="s4">'Guido'</span><span class="s0">, </span><span class="s4">'Steve'</span><span class="s1">]})</span>
+<span class="s1">print(df3); print(df4); print(pd.merge(df3</span><span class="s0">, </span><span class="s1">df4))</span>
+<span class="s1">df5 = pd.DataFrame({</span><span class="s4">'group'</span><span class="s1">: [</span><span class="s4">'Accounting'</span><span class="s0">, </span><span class="s4">'Accounting'</span><span class="s0">,</span>
+                              <span class="s4">'Engineering'</span><span class="s0">, </span><span class="s4">'Engineering'</span><span class="s0">, </span><span class="s4">'HR'</span><span class="s0">, </span><span class="s4">'HR'</span><span class="s1">]</span><span class="s0">,</span>
+                    <span class="s4">'skills'</span><span class="s1">: [</span><span class="s4">'math'</span><span class="s0">, </span><span class="s4">'spreadsheets'</span><span class="s0">, </span><span class="s4">'coding'</span><span class="s0">, </span><span class="s4">'linux'</span><span class="s0">,</span>
+                               <span class="s4">'spreadsheets'</span><span class="s0">, </span><span class="s4">'organization'</span><span class="s1">]})</span>
+<span class="s1">print(df1); print(df5); print(pd.merge(df1</span><span class="s0">, </span><span class="s1">df5))</span>
+<span class="s1">print(df1); print(df2); print(pd.merge(df1</span><span class="s0">, </span><span class="s1">df2</span><span class="s0">, </span><span class="s1">on=</span><span class="s4">'employee'</span><span class="s1">))</span>
+<span class="s1">df3 = pd.DataFrame({</span><span class="s4">'name'</span><span class="s1">: [</span><span class="s4">'Bob'</span><span class="s0">, </span><span class="s4">'Jake'</span><span class="s0">, </span><span class="s4">'Lisa'</span><span class="s0">, </span><span class="s4">'Sue'</span><span class="s1">]</span><span class="s0">,</span>
+                    <span class="s4">'salary'</span><span class="s1">: [</span><span class="s3">70000</span><span class="s0">, </span><span class="s3">80000</span><span class="s0">, </span><span class="s3">120000</span><span class="s0">, </span><span class="s3">90000</span><span class="s1">]})</span>
+<span class="s1">print(df1); print(df3); print(pd.merge(df1</span><span class="s0">, </span><span class="s1">df3</span><span class="s0">, </span><span class="s1">left_on=</span><span class="s4">'employee'</span><span class="s0">, </span><span class="s1">right_on=</span><span class="s4">'name'</span><span class="s1">))</span>
+<span class="s1">print(pd.merge(df1</span><span class="s0">, </span><span class="s1">df3</span><span class="s0">, </span><span class="s1">left_on=</span><span class="s4">'employee'</span><span class="s0">, </span><span class="s1">right_on=</span><span class="s4">'name'</span><span class="s1">).drop(</span><span class="s4">'name'</span><span class="s0">, </span><span class="s1">axis=</span><span class="s3">1</span><span class="s1">))</span>
+<span class="s1">df1a = df1.set_index(</span><span class="s4">'employee'</span><span class="s1">)</span>
+<span class="s1">df2a = df2.set_index(</span><span class="s4">'employee'</span><span class="s1">)</span>
+<span class="s1">print(df1a); print(df2a); print(pd.merge(df1a</span><span class="s0">, </span><span class="s1">df2a</span><span class="s0">, </span><span class="s1">left_index=</span><span class="s0">True, </span><span class="s1">right_index=</span><span class="s0">True</span><span class="s1">))</span>
+<span class="s1">print(df1a.index)</span>
+<span class="s1">print(df1a.join(df2a))</span>
+<span class="s1">print(df1a); print(df3); print(pd.merge(df1a</span><span class="s0">, </span><span class="s1">df3</span><span class="s0">, </span><span class="s1">left_index=</span><span class="s0">True, </span><span class="s1">right_on=</span><span class="s4">'name'</span><span class="s1">))</span>
+<span class="s1">df6 = pd.DataFrame({</span><span class="s4">'name'</span><span class="s1">: [</span><span class="s4">'Peter'</span><span class="s0">, </span><span class="s4">'Paul'</span><span class="s0">, </span><span class="s4">'Mary'</span><span class="s1">]</span><span class="s0">,</span>
+                    <span class="s4">'food'</span><span class="s1">: [</span><span class="s4">'fish'</span><span class="s0">, </span><span class="s4">'beans'</span><span class="s0">, </span><span class="s4">'bread'</span><span class="s1">]}</span><span class="s0">,</span>
+                   <span class="s1">columns = [</span><span class="s4">'name'</span><span class="s0">, </span><span class="s4">'food'</span><span class="s1">])</span>
+<span class="s1">df7 = pd.DataFrame({</span><span class="s4">'name'</span><span class="s1">: [</span><span class="s4">'Mary'</span><span class="s0">, </span><span class="s4">'Joseph'</span><span class="s1">]</span><span class="s0">,</span>
+                    <span class="s4">'drink'</span><span class="s1">: [</span><span class="s4">'wine'</span><span class="s0">, </span><span class="s4">'beer'</span><span class="s1">]}</span><span class="s0">,</span>
+                   <span class="s1">columns = [</span><span class="s4">'name'</span><span class="s0">, </span><span class="s4">'drink'</span><span class="s1">])</span>
+<span class="s1">print(df6); print(df7); print(pd.merge(df6</span><span class="s0">, </span><span class="s1">df7))</span>
+<span class="s1">print(pd.merge(df6</span><span class="s0">, </span><span class="s1">df7</span><span class="s0">, </span><span class="s1">how=</span><span class="s4">'outer'</span><span class="s1">))</span>
+<span class="s1">print(pd.merge(df6</span><span class="s0">, </span><span class="s1">df7</span><span class="s0">, </span><span class="s1">how=</span><span class="s4">'left'</span><span class="s1">))</span>
+<span class="s1">print(pd.merge(df6</span><span class="s0">, </span><span class="s1">df7</span><span class="s0">, </span><span class="s1">how=</span><span class="s4">'right'</span><span class="s1">))</span>
+<span class="s1">df8 = pd.DataFrame({</span><span class="s4">'name'</span><span class="s1">: [</span><span class="s4">'Bob'</span><span class="s0">, </span><span class="s4">'Jake'</span><span class="s0">, </span><span class="s4">'Lisa'</span><span class="s0">, </span><span class="s4">'Sue'</span><span class="s1">]</span><span class="s0">,</span>
+                    <span class="s4">'rank'</span><span class="s1">: [</span><span class="s3">1</span><span class="s0">, </span><span class="s3">2</span><span class="s0">, </span><span class="s3">3</span><span class="s0">, </span><span class="s3">4</span><span class="s1">]})</span>
+<span class="s1">df9 = pd.DataFrame({</span><span class="s4">'name'</span><span class="s1">: [</span><span class="s4">'Bob'</span><span class="s0">, </span><span class="s4">'Jake'</span><span class="s0">, </span><span class="s4">'Lisa'</span><span class="s0">, </span><span class="s4">'Sue'</span><span class="s1">]</span><span class="s0">,</span>
+                    <span class="s4">'rank'</span><span class="s1">: [</span><span class="s3">3</span><span class="s0">, </span><span class="s3">1</span><span class="s0">, </span><span class="s3">4</span><span class="s0">, </span><span class="s3">2</span><span class="s1">]})</span>
+<span class="s1">print(df8); print(df9); print(pd.merge(df8</span><span class="s0">, </span><span class="s1">df9</span><span class="s0">, </span><span class="s1">on=</span><span class="s4">'name'</span><span class="s1">))</span>
+<span class="s1">print(pd.merge(df8</span><span class="s0">, </span><span class="s1">df9</span><span class="s0">, </span><span class="s1">on=</span><span class="s4">'name'</span><span class="s0">, </span><span class="s1">suffixes=[</span><span class="s4">&quot;_L&quot;</span><span class="s0">, </span><span class="s4">&quot;_R&quot;</span><span class="s1">]))</span>
+
+<span class="s1">pop = pd.read_csv(</span><span class="s4">'https://raw.githubusercontent.com/jakevdp/data-USstates/master/state-population.csv'</span><span class="s1">)</span>
+<span class="s1">areas = pd.read_csv(</span><span class="s4">'https://raw.githubusercontent.com/jakevdp/data-USstates/master/state-areas.csv'</span><span class="s1">)</span>
+<span class="s1">abbrevs = pd.read_csv(</span><span class="s4">'https://raw.githubusercontent.com/jakevdp/data-USstates/master/state-abbrevs.csv'</span><span class="s1">)</span>
+<span class="s1">print(pop.head()); print(areas.head()); print(abbrevs.head())</span>
+<span class="s1">merged = pd.merge(pop</span><span class="s0">, </span><span class="s1">abbrevs</span><span class="s0">, </span><span class="s1">how=</span><span class="s4">'outer'</span><span class="s0">,</span>
+                  <span class="s1">left_on=</span><span class="s4">'state/region'</span><span class="s0">, </span><span class="s1">right_on=</span><span class="s4">'abbreviation'</span><span class="s1">)</span>
+<span class="s1">merged = merged.drop(</span><span class="s4">'abbreviation'</span><span class="s0">, </span><span class="s3">1</span><span class="s1">)</span>
+<span class="s1">print(merged.head())</span>
+<span class="s1">print(merged.isnull().any())</span>
+<span class="s1">print(merged[merged[</span><span class="s4">'population'</span><span class="s1">].isnull()].head())</span>
+<span class="s1">print(merged.loc[merged[</span><span class="s4">'state'</span><span class="s1">].isnull()</span><span class="s0">, </span><span class="s4">'state/region'</span><span class="s1">].unique())</span>
+<span class="s1">merged.loc[merged[</span><span class="s4">'state/region'</span><span class="s1">] == </span><span class="s4">'PR'</span><span class="s0">, </span><span class="s4">'state'</span><span class="s1">] = </span><span class="s4">'Puerto Rico'</span>
+<span class="s1">merged.loc[merged[</span><span class="s4">'state/region'</span><span class="s1">] == </span><span class="s4">'USA'</span><span class="s0">, </span><span class="s4">'state'</span><span class="s1">] = </span><span class="s4">'United States'</span>
+<span class="s1">print(merged.isnull().any())</span>
+<span class="s1">final = pd.merge(merged</span><span class="s0">, </span><span class="s1">areas</span><span class="s0">, </span><span class="s1">on=</span><span class="s4">'state'</span><span class="s0">, </span><span class="s1">how=</span><span class="s4">'left'</span><span class="s1">)</span>
+<span class="s1">print(final.head())</span>
+<span class="s1">print(final.isnull().any())</span>
+<span class="s1">print(final[</span><span class="s4">'state'</span><span class="s1">][final[</span><span class="s4">'area (sq. mi)'</span><span class="s1">].isnull()].unique())</span>
+<span class="s1">final.dropna(inplace=</span><span class="s0">True</span><span class="s1">)</span>
+<span class="s1">print(final.head())</span>
+<span class="s1">data2010 = final.query(</span><span class="s4">'year == 2010 &amp; ages == &quot;total&quot;'</span><span class="s1">)</span>
+<span class="s1">print(data2010.head())</span>
+<span class="s1">data2010.set_index(</span><span class="s4">'state'</span><span class="s0">, </span><span class="s1">inplace=</span><span class="s0">True</span><span class="s1">)</span>
+<span class="s1">density = data2010[</span><span class="s4">'population'</span><span class="s1">] / data2010[</span><span class="s4">'area (sq. mi)'</span><span class="s1">]</span>
+<span class="s1">density.sort_values(ascending=</span><span class="s0">False, </span><span class="s1">inplace=</span><span class="s0">True</span><span class="s1">)</span>
+<span class="s1">print(density.head())</span>
+<span class="s1">print(density.tail())</span>
+
+<span class="s2"># Aggregation and Grouping</span>
+<span class="s0">import </span><span class="s1">seaborn </span><span class="s0">as </span><span class="s1">sns</span>
+<span class="s1">planets = sns.load_dataset(</span><span class="s4">'planets'</span><span class="s1">)</span>
+<span class="s1">print(planets.shape)</span>
+<span class="s1">print(planets.head())</span>
+<span class="s1">rng = np.random.RandomState(</span><span class="s3">42</span><span class="s1">)</span>
+<span class="s1">ser = pd.Series(rng.rand(</span><span class="s3">5</span><span class="s1">))</span>
+<span class="s1">print(ser)</span>
+<span class="s1">print(ser.sum())</span>
+<span class="s1">print(ser.mean())</span>
+<span class="s1">df = pd.DataFrame({</span><span class="s4">'A'</span><span class="s1">: rng.rand(</span><span class="s3">5</span><span class="s1">)</span><span class="s0">,</span>
+                   <span class="s4">'B'</span><span class="s1">: rng.rand(</span><span class="s3">5</span><span class="s1">)})</span>
+<span class="s1">print(df)</span>
+<span class="s1">print(df.mean())</span>
+<span class="s1">print(df.mean(axis=</span><span class="s4">'columns'</span><span class="s1">))</span>
+<span class="s1">print(planets.dropna().describe())</span>
+<span class="s1">df = pd.DataFrame({</span><span class="s4">'key'</span><span class="s1">: [</span><span class="s4">'A'</span><span class="s0">, </span><span class="s4">'B'</span><span class="s0">, </span><span class="s4">'C'</span><span class="s0">, </span><span class="s4">'A'</span><span class="s0">, </span><span class="s4">'B'</span><span class="s0">, </span><span class="s4">'C'</span><span class="s1">]</span><span class="s0">,</span>
+                   <span class="s4">'data'</span><span class="s1">: range(</span><span class="s3">6</span><span class="s1">)}</span><span class="s0">, </span><span class="s1">columns= [</span><span class="s4">'key'</span><span class="s0">, </span><span class="s4">'data'</span><span class="s1">])</span>
+<span class="s1">print(df)</span>
+<span class="s1">df.groupby(</span><span class="s4">'key'</span><span class="s1">)</span>
+<span class="s1">print(df.groupby(</span><span class="s4">'key'</span><span class="s1">).sum())</span>
+<span class="s1">print(planets.groupby(</span><span class="s4">'method'</span><span class="s1">))</span>
+<span class="s1">print(planets.groupby(</span><span class="s4">'method'</span><span class="s1">)[</span><span class="s4">'orbital_period'</span><span class="s1">])</span>
+<span class="s1">print(planets.groupby(</span><span class="s4">'method'</span><span class="s1">)[</span><span class="s4">'orbital_period'</span><span class="s1">].median())</span>
+<span class="s0">for </span><span class="s1">(method</span><span class="s0">, </span><span class="s1">group) </span><span class="s0">in </span><span class="s1">planets.groupby(</span><span class="s4">'method'</span><span class="s1">):</span>
+    <span class="s1">print(</span><span class="s4">&quot;{0:30s} shape={1}&quot;</span><span class="s1">.format(method</span><span class="s0">, </span><span class="s1">group.shape))</span>
+<span class="s1">print(planets.groupby(</span><span class="s4">'method'</span><span class="s1">)[</span><span class="s4">'year'</span><span class="s1">].describe().unstack())</span>
+<span class="s1">rng = np.random.RandomState(</span><span class="s3">0</span><span class="s1">)</span>
+<span class="s1">df = pd.DataFrame({</span><span class="s4">'key'</span><span class="s1">: [</span><span class="s4">'A'</span><span class="s0">, </span><span class="s4">'B'</span><span class="s0">, </span><span class="s4">'C'</span><span class="s0">, </span><span class="s4">'A'</span><span class="s0">, </span><span class="s4">'B'</span><span class="s0">, </span><span class="s4">'C'</span><span class="s1">]</span><span class="s0">,</span>
+                   <span class="s4">'data1'</span><span class="s1">: range(</span><span class="s3">6</span><span class="s1">)</span><span class="s0">,</span>
+                   <span class="s4">'data2'</span><span class="s1">: rng.randint(</span><span class="s3">0</span><span class="s0">, </span><span class="s3">10</span><span class="s0">, </span><span class="s3">6</span><span class="s1">)}</span><span class="s0">,</span>
+                  <span class="s1">columns = [</span><span class="s4">'key'</span><span class="s0">, </span><span class="s4">'data1'</span><span class="s0">, </span><span class="s4">'data2'</span><span class="s1">])</span>
+<span class="s1">print(df)</span>
+<span class="s1">print(df.groupby(</span><span class="s4">'key'</span><span class="s1">).aggregate([</span><span class="s4">'min'</span><span class="s0">, </span><span class="s1">np.median</span><span class="s0">, </span><span class="s1">max]))</span>
+<span class="s1">print(df.groupby(</span><span class="s4">'key'</span><span class="s1">).aggregate({</span><span class="s4">'data1'</span><span class="s1">: </span><span class="s4">'min'</span><span class="s0">,</span>
+                                   <span class="s4">'data2'</span><span class="s1">: </span><span class="s4">'max'</span><span class="s1">}))</span>
+<span class="s0">def </span><span class="s1">filter_func(x):</span>
+    <span class="s0">return </span><span class="s1">x[</span><span class="s4">'data2'</span><span class="s1">].std() &gt; </span><span class="s3">4</span>
+<span class="s1">print(df); print(df.groupby(</span><span class="s4">'key'</span><span class="s1">).std()); print(df.groupby(</span><span class="s4">'key'</span><span class="s1">).filter(filter_func))</span>
+<span class="s1">print(df.groupby(</span><span class="s4">'key'</span><span class="s1">).transform(</span><span class="s0">lambda </span><span class="s1">x: x - x.mean()))</span>
+<span class="s0">def </span><span class="s1">norm_by_data2(x):</span>
+    <span class="s1">x[</span><span class="s4">'data1'</span><span class="s1">] /= x[</span><span class="s4">'data2'</span><span class="s1">].sum()</span>
+    <span class="s0">return </span><span class="s1">x</span>
+<span class="s1">print(df); print(df.groupby(</span><span class="s4">'key'</span><span class="s1">).apply(norm_by_data2))</span>
+<span class="s1">print(df[</span><span class="s4">'data1'</span><span class="s1">])</span>
+<span class="s1">L = [</span><span class="s3">0</span><span class="s0">, </span><span class="s3">1</span><span class="s0">, </span><span class="s3">0</span><span class="s0">, </span><span class="s3">1</span><span class="s0">, </span><span class="s3">2</span><span class="s0">, </span><span class="s3">0</span><span class="s1">]</span>
+<span class="s1">print(df); print(df.groupby(L).sum())</span>
+<span class="s1">print(df); print(df.groupby(df[</span><span class="s4">'key'</span><span class="s1">]).sum())</span>
+<span class="s1">df2 = df.set_index(</span><span class="s4">'key'</span><span class="s1">)</span>
+<span class="s1">mapping = {</span><span class="s4">'A'</span><span class="s1">: </span><span class="s4">'vowel'</span><span class="s0">, </span><span class="s4">'B'</span><span class="s1">: </span><span class="s4">'consonant'</span><span class="s0">, </span><span class="s4">'C'</span><span class="s1">: </span><span class="s4">'consonant'</span><span class="s1">}</span>
+<span class="s1">print(df2); print(df2.groupby(mapping).sum())</span>
+<span class="s1">print(df2); print(df2.groupby(str.lower).mean())</span>
+<span class="s1">print(df2.groupby([str.lower</span><span class="s0">, </span><span class="s1">mapping]).mean())</span>
+<span class="s1">decade = </span><span class="s3">10 </span><span class="s1">* (planets[</span><span class="s4">'year'</span><span class="s1">] // </span><span class="s3">10</span><span class="s1">)</span>
+<span class="s1">decade = decade.astype(str) + </span><span class="s4">'s'</span>
+<span class="s1">decade.name = </span><span class="s4">'decade'</span>
+<span class="s1">print(planets.groupby([</span><span class="s4">'method'</span><span class="s0">, </span><span class="s1">decade])[</span><span class="s4">'number'</span><span class="s1">].sum().unstack().fillna(</span><span class="s3">0</span><span class="s1">))</span>
+
+<span class="s2"># Pivot Tables</span>
+<span class="s1">titanic = sns.load_dataset(</span><span class="s4">'titanic'</span><span class="s1">)</span>
+<span class="s1">print(titanic.head())</span>
+<span class="s1">print(titanic.groupby(</span><span class="s4">'sex'</span><span class="s1">)[[</span><span class="s4">'survived'</span><span class="s1">]].mean())</span>
+<span class="s1">print(titanic.groupby([</span><span class="s4">'sex'</span><span class="s0">, </span><span class="s4">'class'</span><span class="s1">])[</span><span class="s4">'survived'</span><span class="s1">].aggregate(</span><span class="s4">'mean'</span><span class="s1">).unstack())</span>
+<span class="s1">print(titanic.pivot_table(</span><span class="s4">'survived'</span><span class="s0">, </span><span class="s1">index=</span><span class="s4">'sex'</span><span class="s0">, </span><span class="s1">columns=</span><span class="s4">'class'</span><span class="s1">))</span>
+<span class="s1">age = pd.cut(titanic[</span><span class="s4">'age'</span><span class="s1">]</span><span class="s0">, </span><span class="s1">[</span><span class="s3">0</span><span class="s0">, </span><span class="s3">18</span><span class="s0">, </span><span class="s3">80</span><span class="s1">])</span>
+<span class="s1">print(titanic.pivot_table(</span><span class="s4">'survived'</span><span class="s0">, </span><span class="s1">[</span><span class="s4">'sex'</span><span class="s0">, </span><span class="s1">age]</span><span class="s0">, </span><span class="s4">'class'</span><span class="s1">))</span>
+<span class="s1">fare = pd.qcut(titanic[</span><span class="s4">'fare'</span><span class="s1">]</span><span class="s0">, </span><span class="s3">2</span><span class="s1">)</span>
+<span class="s1">print(titanic.pivot_table(</span><span class="s4">'survived'</span><span class="s0">, </span><span class="s1">[</span><span class="s4">'sex'</span><span class="s0">, </span><span class="s1">age]</span><span class="s0">, </span><span class="s1">[fare</span><span class="s0">, </span><span class="s4">'class'</span><span class="s1">]))</span>
+<span class="s1">print(titanic.pivot_table(index=</span><span class="s4">'sex'</span><span class="s0">, </span><span class="s1">columns=</span><span class="s4">'class'</span><span class="s0">,</span>
+                          <span class="s1">aggfunc={</span><span class="s4">'survived'</span><span class="s1">: sum</span><span class="s0">, </span><span class="s4">'fare'</span><span class="s1">: </span><span class="s4">'mean'</span><span class="s1">}))</span>
+<span class="s1">print(titanic.pivot_table(</span><span class="s4">'survived'</span><span class="s0">, </span><span class="s1">index=</span><span class="s4">'sex'</span><span class="s0">, </span><span class="s1">columns=</span><span class="s4">'class'</span><span class="s0">, </span><span class="s1">margins=</span><span class="s0">True</span><span class="s1">))</span>
+
+<span class="s2"># Vectorized String Operations</span>
+<span class="s1">x = np.array([</span><span class="s3">2</span><span class="s0">, </span><span class="s3">3</span><span class="s0">, </span><span class="s3">5</span><span class="s0">, </span><span class="s3">7</span><span class="s0">, </span><span class="s3">11</span><span class="s0">, </span><span class="s3">13</span><span class="s1">])</span>
+<span class="s1">print(x*</span><span class="s3">2</span><span class="s1">)</span>
+<span class="s1">data = [</span><span class="s4">'peter'</span><span class="s0">, </span><span class="s4">'Paul'</span><span class="s0">, </span><span class="s4">'MARY'</span><span class="s0">, </span><span class="s4">'gUIDO'</span><span class="s1">]</span>
+<span class="s1">print([s.capitalize() </span><span class="s0">for </span><span class="s1">s </span><span class="s0">in </span><span class="s1">data])</span>
+<span class="s1">data = [</span><span class="s4">'peter'</span><span class="s0">, </span><span class="s4">'Paul'</span><span class="s0">, None, </span><span class="s4">'MARY'</span><span class="s0">, </span><span class="s4">'gUIDO'</span><span class="s1">]</span>
+<span class="s2"># print([s.capitalize() for s in data])</span>
+<span class="s1">names = pd.Series(data)</span>
+<span class="s1">print(names)</span>
+<span class="s1">print(names.str.capitalize())</span>
+<span class="s1">monte = pd.Series([</span><span class="s4">'Graham Chapman'</span><span class="s0">, </span><span class="s4">'John Cleese'</span><span class="s0">, </span><span class="s4">'Terry Gilliam'</span><span class="s0">,</span>
+                   <span class="s4">'Eric Idle'</span><span class="s0">, </span><span class="s4">'Terry Jones'</span><span class="s0">, </span><span class="s4">'Michael Palin'</span><span class="s1">])</span>
+<span class="s1">print(monte.str.lower())</span>
+<span class="s1">print(monte.str.len())</span>
+<span class="s1">print(monte.str.startswith(</span><span class="s4">'T'</span><span class="s1">))</span>
+<span class="s1">print(monte.str.split())</span>
+<span class="s1">print(monte.str.extract(</span><span class="s4">'([A-Za-z]+)'</span><span class="s1">))</span>
+<span class="s1">print(monte.str.findall(</span><span class="s4">r'^[^AEIOU].*[^aeiou]$'</span><span class="s1">))</span>
+<span class="s1">print(monte.str[</span><span class="s3">0</span><span class="s1">:</span><span class="s3">3</span><span class="s1">])</span>
+<span class="s1">print(monte.str.split().str.get(-</span><span class="s3">1</span><span class="s1">))</span>
+<span class="s1">full_monte = pd.DataFrame({</span><span class="s4">'name'</span><span class="s1">: monte</span><span class="s0">,</span>
+                           <span class="s4">'info'</span><span class="s1">: [</span><span class="s4">'B|C|D'</span><span class="s0">, </span><span class="s4">'B|D'</span><span class="s0">, </span><span class="s4">'A|C'</span><span class="s0">, </span><span class="s4">'B|D'</span><span class="s0">, </span><span class="s4">'B|C'</span><span class="s0">,</span>
+                                    <span class="s4">'B|C|D'</span><span class="s1">]})</span>
+<span class="s1">print(full_monte)</span>
+<span class="s1">print(full_monte[</span><span class="s4">'info'</span><span class="s1">].str.get_dummies(</span><span class="s4">'|'</span><span class="s1">))</span>
+
+<span class="s2"># Working with Time Series</span>
+<span class="s0">from </span><span class="s1">datetime </span><span class="s0">import </span><span class="s1">datetime</span>
+<span class="s1">print(datetime(year=</span><span class="s3">2015</span><span class="s0">, </span><span class="s1">month=</span><span class="s3">7</span><span class="s0">, </span><span class="s1">day=</span><span class="s3">4</span><span class="s1">))</span>
+<span class="s0">from </span><span class="s1">dateutil </span><span class="s0">import </span><span class="s1">parser</span>
+<span class="s1">date = parser.parse(</span><span class="s4">&quot;4th of July, 2015&quot;</span><span class="s1">)</span>
+<span class="s1">print(date)</span>
+<span class="s1">date = np.array(</span><span class="s4">'2015-07-04'</span><span class="s0">, </span><span class="s1">dtype=np.datetime64)</span>
+<span class="s1">print(date)</span>
+<span class="s1">print(date + np.arange(</span><span class="s3">12</span><span class="s1">))</span>
+<span class="s1">print(np.datetime64(</span><span class="s4">'2015-07-04'</span><span class="s1">))</span>
+<span class="s1">print(np.datetime64(</span><span class="s4">'2015-07-04 12:00'</span><span class="s1">))</span>
+<span class="s1">print(np.datetime64(</span><span class="s4">'2015-07-04 12:59:59.50'</span><span class="s0">, </span><span class="s4">'ns'</span><span class="s1">))</span>
+<span class="s1">date = pd.to_datetime(</span><span class="s4">&quot;4th of July, 2015&quot;</span><span class="s1">)</span>
+<span class="s1">print(date)</span>
+<span class="s1">print(date + pd.to_timedelta(np.arange(</span><span class="s3">12</span><span class="s1">)</span><span class="s0">, </span><span class="s4">'D'</span><span class="s1">))</span>
+<span class="s1">index = pd.DatetimeIndex([</span><span class="s4">'2014-07-04'</span><span class="s0">, </span><span class="s4">'2014-08-04'</span><span class="s0">,</span>
+                          <span class="s4">'2015-07-04'</span><span class="s0">, </span><span class="s4">'2015-08-04'</span><span class="s1">])</span>
+<span class="s1">data = pd.Series([</span><span class="s3">0</span><span class="s0">, </span><span class="s3">1</span><span class="s0">, </span><span class="s3">2</span><span class="s0">, </span><span class="s3">3</span><span class="s1">]</span><span class="s0">, </span><span class="s1">index=index)</span>
+<span class="s1">print(data)</span>
+<span class="s1">print(data[</span><span class="s4">'2014-07-04'</span><span class="s1">:</span><span class="s4">'2015-07-04'</span><span class="s1">])</span>
+<span class="s1">print(data[</span><span class="s4">'2015'</span><span class="s1">])</span>
+<span class="s1">dates = pd.to_datetime([datetime(</span><span class="s3">2015</span><span class="s0">, </span><span class="s3">7</span><span class="s0">, </span><span class="s3">3</span><span class="s1">)</span><span class="s0">, </span><span class="s4">'4th of July, 2015'</span><span class="s0">,</span>
+                        <span class="s4">'2015-Jul-6'</span><span class="s0">, </span><span class="s4">'07-07-2015'</span><span class="s0">, </span><span class="s4">'20150708'</span><span class="s1">])</span>
+<span class="s1">print(dates)</span>
+<span class="s1">print(dates.to_period(</span><span class="s4">'D'</span><span class="s1">))</span>
+<span class="s1">print(dates - dates[</span><span class="s3">0</span><span class="s1">])</span>
+<span class="s1">print(pd.date_range(</span><span class="s4">'2015-07-03'</span><span class="s0">, </span><span class="s4">'2015-07-10'</span><span class="s1">))</span>
+<span class="s1">print(pd.date_range(</span><span class="s4">'2015-07-03'</span><span class="s0">, </span><span class="s1">periods=</span><span class="s3">8</span><span class="s1">))</span>
+<span class="s1">print(pd.date_range(</span><span class="s4">'2015-07-03'</span><span class="s0">, </span><span class="s1">periods=</span><span class="s3">8</span><span class="s0">, </span><span class="s1">freq=</span><span class="s4">'H'</span><span class="s1">))</span>
+<span class="s1">print(pd.date_range(</span><span class="s4">'2015-07'</span><span class="s0">, </span><span class="s1">periods=</span><span class="s3">8</span><span class="s0">, </span><span class="s1">freq=</span><span class="s4">'M'</span><span class="s1">))</span>
+<span class="s1">print(pd.timedelta_range(</span><span class="s3">0</span><span class="s0">, </span><span class="s1">periods=</span><span class="s3">10</span><span class="s0">, </span><span class="s1">freq=</span><span class="s4">'H'</span><span class="s1">))</span>
+<span class="s1">print(pd.timedelta_range(</span><span class="s3">0</span><span class="s0">, </span><span class="s1">periods=</span><span class="s3">9</span><span class="s0">, </span><span class="s1">freq=</span><span class="s4">'2H30T'</span><span class="s1">))</span>
+<span class="s0">from </span><span class="s1">pandas.tseries.offsets </span><span class="s0">import </span><span class="s1">BDay</span>
+<span class="s1">print(pd.date_range(</span><span class="s4">'2015-07-01'</span><span class="s0">, </span><span class="s1">periods=</span><span class="s3">5</span><span class="s0">, </span><span class="s1">freq=BDay()))</span>
+<span class="s0">from </span><span class="s1">pandas_datareader </span><span class="s0">import </span><span class="s1">data</span>
+<span class="s1">goog = data.DataReader(</span><span class="s4">'GOOG'</span><span class="s0">, </span><span class="s1">start=</span><span class="s4">'2004'</span><span class="s0">, </span><span class="s1">end=</span><span class="s4">'2016'</span><span class="s0">,</span>
+                       <span class="s1">data_source=</span><span class="s4">'google'</span><span class="s1">)</span>
+<span class="s1">print(goog.head())</span>
+<span class="s1">goog = goog[</span><span class="s4">'Close'</span><span class="s1">]</span>
+<span class="s0">import </span><span class="s1">matplotlib.pyplot </span><span class="s0">as </span><span class="s1">plt</span>
+<span class="s0">import </span><span class="s1">seaborn; seaborn.set()</span>
+<span class="s1">goog.plot();</span></pre>
+</body>
+</html>
